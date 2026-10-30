@@ -7,10 +7,46 @@ to a Beken chip over serial.
 The source originates from Beken's v1.1.0.2 loader and the maintained source
 tree in `h2vivi/firmware-devenv`. This repository includes the Python CLI,
 protocol and chip-controller modules, flash database, runtime configuration,
-and offline regression tests. It contains no PyInstaller executable,
-bundled Python interpreter, Flutter binary or firmware image.
+and offline regression tests. Releases freeze this source into standalone
+executables with PyInstaller. Binaries and bundled Python live in Release
+assets; firmware images are not part of this repository or its releases.
 
-## Install
+## Install a Release executable
+
+Each tagged release builds and tests these archives:
+
+| Host | Archive suffix | Command inside |
+| --- | --- | --- |
+| macOS Apple Silicon | `darwin-arm64.tar.gz` | `bin/bk_loader` |
+| macOS Intel | `darwin-x64.tar.gz` | `bin/bk_loader` |
+| Linux x86_64 | `linux-x64.tar.gz` | `bin/bk_loader` |
+| Linux arm64 | `linux-arm64.tar.gz` | `bin/bk_loader` |
+| Windows x86_64 | `win32-x64.zip` | `bin/bk_loader.exe` |
+
+Archive names are `bk-loader-<version>-<host>.<format>`. Download the archive
+for your computer from [Releases](https://github.com/GizClaw/bk_loader/releases),
+verify it against `SHA256SUMS`, extract it, and add its `bin` directory to PATH.
+No Python or pip installation is needed to run these executables. Linux
+executables are built on Ubuntu 22.04 (glibc 2.35); older glibc is unsupported.
+
+The release's `index.json` records the source commit, platform, archive size,
+archive SHA-256, executable SHA-256 and offline self-test result. Publishing
+requires successful builds and tests on all five native platforms. Each build
+runs the executable outside the checkout, without host Python on PATH, and
+checks its embedded flash database, runtime configuration and native AES code.
+
+GizOS's `@gizclaw/gizos` toolbox selects a pinned Release executable for the
+host and installs it automatically with `gizos setup bk <sdk-version>`.
+It checks the archive and executable SHA-256, reuses the shared installation,
+and exports `BK_LOADER_BIN` plus `bk_loader` on PATH. A firmware worktree does
+not need its own loader or Python environment.
+
+```sh
+bk_loader --version
+bk_loader tools selftest
+```
+
+## Install from source for development
 
 Python 3.10 or newer is required:
 
@@ -27,11 +63,6 @@ On Windows, use `.venv\Scripts\python.exe` and
 `.venv\Scripts\bk_loader.exe`. The package installs the flash database and
 configuration alongside the Python modules, so the command works from any
 directory.
-
-GizOS's `@gizclaw/gizos` toolbox installs a pinned commit into its shared
-tool store and exports `BK_LOADER_BIN` plus the command's directory on `PATH`.
-The toolbox owns that installation; no firmware worktree needs a separate
-copy.
 
 ## Commands
 
@@ -68,7 +99,7 @@ The recovered packet-framing and UI bridge modules are tested independently;
 their presence does not establish support for every newer reference-binary
 operation. Original source lineage and recovery scope are recorded in
 [docs/source-provenance.md](docs/source-provenance.md) and [SOURCE.json](SOURCE.json).
-Package version `1.1.0.2.post1` identifies GizClaw's packaging revision; the
+Package version `1.1.0.2.post2` identifies GizClaw's packaging revision; the
 upstream CLI version banner remains `bk_loader.py,v1.1.0.2`.
 
 ## Tests
@@ -77,12 +108,23 @@ upstream CLI version banner remains `bk_loader.py,v1.1.0.2`.
 .venv/bin/python -m unittest discover -s tests -v
 ```
 
-CI runs these offline tests on Linux, macOS and Windows after installing the
-package. The tests exercise protocol framing, response validation, runtime
-configuration and the installed CLI. They do not open a device or flash,
+CI runs these offline tests and freezes a native executable on every supported
+platform. The tests exercise protocol framing, response validation, runtime
+configuration and the installed/frozen CLI. They do not open a device or flash,
 erase, reset or provision a chip. Vendor diagnostic scripts under
 `bkutils/protocol/test` are retained as source and are outside the automatic
 test suite.
+
+To build the same host executable locally:
+
+```sh
+.venv/bin/python -m pip install -r requirements-build.txt .
+.venv/bin/python scripts/build_binary.py
+```
+
+Maintainers publish an immutable version by tagging its source commit
+`v<project-version>`. The Release workflow rebuilds and verifies the complete
+matrix before publishing archives, `index.json` and `SHA256SUMS`.
 
 ## Notices
 

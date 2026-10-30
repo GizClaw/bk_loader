@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "gizclaw-bk-loader"
-version = "1.1.0.2.post1"
-description = "Source-based Beken UART loader maintained by GizClaw"
+version = "1.1.0.2.post2"
+description = "Beken UART loader maintained by GizClaw"
 readme = "README.md"
 requires-python = ">=3.10"
 license = {text = "Preserved Beken BSD/MIT declarations; see NOTICE.md"}
@@ -20,11 +20,11 @@ dependencies = [
 Repository = "https://github.com/GizClaw/bk_loader"
 
 [project.scripts]
-bk_loader = "bk_loader:cli"
+bk_loader = "gizclaw_bk_loader:cli"
 
 [tool.setuptools]
 package-dir = {"" = "src"}
-py-modules = ["bk_loader", "tizen_entrance"]
+py-modules = ["bk_loader", "gizclaw_bk_loader", "tizen_entrance"]
 
 [tool.setuptools.packages.find]
 where = ["src"]

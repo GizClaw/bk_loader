@@ -8,7 +8,7 @@ from unittest.mock import patch
 
 from click.testing import CliRunner
 
-from bk_loader import cli
+from gizclaw_bk_loader import cli
 from bkutils.flash_adapter.flash_config import FlashConfig
 
 
@@ -37,6 +37,16 @@ class CliTest(unittest.TestCase):
             )
             self.assertGreater(json.loads(result.stdout.splitlines()[0])["entries"], 0)
             self.assertIn("bk_loader.py,v1.1.0.2", result.stdout)
+
+    def test_selftest_checks_runtime_data_and_native_crypto_without_uart(self):
+        with patch("serial.Serial") as serial:
+            result = CliRunner().invoke(cli, ["tools", "selftest"])
+            self.assertEqual(result.exit_code, 0, result.output)
+            checked = json.loads(result.output)
+            self.assertEqual(checked["packageVersion"], "1.1.0.2.post2")
+            self.assertGreater(checked["flashEntries"], 0)
+            self.assertEqual(checked["crypto"], "ok")
+            serial.assert_not_called()
 
 
 if __name__ == "__main__":

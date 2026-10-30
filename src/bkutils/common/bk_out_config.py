@@ -50,7 +50,8 @@ class BkOutConfig:
             if values:
                 config_type(values)
 
-    def get_config_file_path(self):
+    @staticmethod
+    def get_config_file_path():
         return os.path.join(
             os.path.dirname(os.path.dirname(__file__)),
             'config',

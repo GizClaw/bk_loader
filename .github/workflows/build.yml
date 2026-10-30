@@ -1,0 +1,39 @@
+name: Native executables
+
+on:
+  workflow_call:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build and test ${{ matrix.host }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { host: linux-x64, os: ubuntu-22.04 }
+          - { host: linux-arm64, os: ubuntu-22.04-arm }
+          - { host: darwin-arm64, os: macos-15 }
+          - { host: darwin-x64, os: macos-15-intel }
+          - { host: win32-x64, os: windows-2025 }
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: "3.11"
+      - name: Install package and binary build tools
+        run: python -m pip install -r requirements-build.txt .
+      - name: Run offline protocol and packaging tests
+        run: python -m unittest discover -s tests -v
+      - name: Freeze and smoke-test the executable without host Python
+        run: python scripts/build_binary.py --host "${{ matrix.host }}"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bk-loader-${{ matrix.host }}
+          path: dist/release/*
+          if-no-files-found: error
