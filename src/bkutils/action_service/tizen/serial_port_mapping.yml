@@ -1,0 +1,8 @@
+serial_ports:
+  /dev/ttyUSB2:
+    chip_id: '0x7236'
+    debug: '3'
+    flash_id: '0x1665c8'
+    last_updated: '2025-11-27T03:48:01Z'
+    link_type: '0'
+    work_baudrate: 6000000

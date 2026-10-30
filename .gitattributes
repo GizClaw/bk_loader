@@ -1,0 +1,3 @@
+# Preserve upstream source formatting and line endings.
+src/** -whitespace
+docs/upstream* -whitespace

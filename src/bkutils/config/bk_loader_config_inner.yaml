@@ -1,0 +1,33 @@
+enable: true
+check_response_code: true
+set_baudrate:
+  cmd_delay_ms: 90
+  switch_delay_ms: 40
+  wait_response_timeout_ms: 400
+read_flash:
+  retry_count: 20
+  fixed_timeout_ms: 0
+  timeout_factor: 5
+linkcheck:
+  use_version: 2
+  version_2:
+    max_recycle_count: 3
+    max_retry_interval: 80
+    max_wait_time: 10
+    use_mixed_detection: true
+  version_3:
+    max_recycle_count: 30
+    max_retry_interval: 200
+    line_break_timeout_ms: 2
+    delay_time_before_reboot: 8
+    delay_time_after_reboot: 5
+    use_mixed_detection: true
+chip_name: ''
+download_flow:
+  check_bin_board_crc_sync: true
+  verify_product_id: true
+  allow_change_linkcheck_obj: false
+erase_flow:
+  allow_change_linkcheck_obj: true
+otp_config:
+  must_use_bl1: false

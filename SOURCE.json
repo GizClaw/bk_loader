@@ -1,0 +1,8 @@
+{
+  "source_repository": "h2vivi/firmware-devenv",
+  "source_commit": "ff112cb8900a9c6398bfe5eea801e5139f182f34",
+  "source_directory": "tools/bk_loader/src",
+  "upstream_version": "v1.1.0.2",
+  "reference_binary_version": "4.0.2+260129055",
+  "reference_binary_included": false
+}
