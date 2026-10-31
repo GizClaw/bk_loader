@@ -40,6 +40,8 @@ The unadapted snapshot is preserved so maintenance changes remain reviewable:
 3. The distribution entry point adds `tools selftest`, returning JSON and
    checking bundled data, native AES and P-256 signing without serial access.
    It suppresses the upstream tools banner for that one command.
+   The entry point uses UTF-8 text streams so redirected Windows help/logs
+   can represent the upstream Unicode text without encoding failures.
 4. Secure debug resolves the default private key next to the supplied public
    key. Public-key verification no longer requires an unrelated private key
    in the installed module directory; missing public keys raise a normal

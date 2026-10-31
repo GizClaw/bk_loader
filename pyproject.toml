@@ -21,7 +21,7 @@ dependencies = [
 Repository = "https://github.com/GizClaw/bk_loader"
 
 [project.scripts]
-bk_loader = "gizclaw_bk_loader:cli"
+bk_loader = "gizclaw_bk_loader:main"
 
 [tool.setuptools]
 package-dir = {"" = "src"}

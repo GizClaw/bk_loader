@@ -60,5 +60,13 @@ def selftest():
     }, sort_keys=True))
 
 
-if __name__ == "__main__":
+def main():
+    # Windows redirected streams default to legacy encodings, but help includes Unicode.
+    for stream in (sys.stdin, sys.stdout, sys.stderr):
+        if hasattr(stream, "reconfigure"):
+            stream.reconfigure(encoding="utf-8")
     cli(prog_name="bk_loader")
+
+
+if __name__ == "__main__":
+    main()

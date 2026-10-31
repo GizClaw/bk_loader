@@ -33,7 +33,7 @@
       "files": [
         "src/gizclaw_bk_loader.py"
       ],
-      "change": "Add an offline JSON selftest for bundled resources, AES and P-256 signing; suppress the tools banner for that command."
+      "change": "Add an offline JSON selftest for resources, AES and P-256; suppress its tools banner and configure UTF-8 CLI streams for redirected Windows output."
     },
     {
       "files": [
