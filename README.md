@@ -4,12 +4,31 @@ Beken's UART flashing utility, maintained as Python source by GizClaw.
 The installed command is `bk_loader`. It runs on the host computer and talks
 to a Beken chip over serial.
 
-The source originates from Beken's v1.1.0.2 loader and the maintained source
-tree in `h2vivi/firmware-devenv`. This repository includes the Python CLI,
+The imported Python source reports backend version `v1.1.0.2` and was
+maintained in `h2vivi/firmware-devenv`. This repository includes the Python CLI,
 protocol and chip-controller modules, flash database, runtime configuration,
 and offline regression tests. Releases freeze this source into standalone
 executables with PyInstaller. Binaries and bundled Python live in Release
 assets; firmware images are not part of this repository or its releases.
+
+## Official BKFIL 4.1.7
+
+Beken now distributes native CLI packages for macOS arm64/x86_64, Linux x86_64
+and Windows x86_64. The verified product build is `4.1.7.261014250`; its macOS
+CLI reports `bk_loader, version 4.1.7.250`. The official macOS package contains
+a Python 3.9.6 runtime and PyInstaller bytecode. The Linux and Windows ZIPs
+contain standalone executables, with Nuitka onefile markers.
+
+A complete Python source distribution for 4.1.7 has not been located in the
+checked official directories and packages. This repository's maintained
+`1.1.0.2.post2` source package is not relabeled as 4.1.7. The verified downloads,
+checksums and distinction between product and backend versions are recorded in
+[the upstream audit](docs/upstream-4.1.7.md) and its
+[machine-readable manifest](upstream/4.1.7.json).
+
+The GizOS toolbox can install the official 4.1.7 runtime in its shared store.
+On macOS it expands the package payload without running the global installation
+scripts; a complete `_internal` directory remains alongside `bk_loader`.
 
 ## Install a Release executable
 
@@ -35,11 +54,12 @@ requires successful builds and tests on all five native platforms. Each build
 runs the executable outside the checkout, without host Python on PATH, and
 checks its embedded flash database, runtime configuration and native AES code.
 
-GizOS's `@gizclaw/gizos` toolbox selects a pinned Release executable for the
-host and installs it automatically with `gizos setup bk <sdk-version>`.
-It checks the archive and executable SHA-256, reuses the shared installation,
-and exports `BK_LOADER_BIN` plus `bk_loader` on PATH. A firmware worktree does
-not need its own loader or Python environment.
+GizOS SDK setup installs the official 4.1.7 loader automatically. To choose
+this repository's older maintained executable instead, use
+`gizos install bk_loader 1.1.0.2.post2`. GizOS verifies archive and executable
+SHA-256 values, reuses the shared installation, and exports `BK_LOADER_BIN`
+and the executable's directory on PATH. A firmware worktree does not need its
+own loader or Python environment.
 
 ```sh
 bk_loader --version

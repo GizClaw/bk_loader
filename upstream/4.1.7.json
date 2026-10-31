@@ -1,0 +1,90 @@
+{
+  "schema": 1,
+  "verifiedOn": "2026-10-31",
+  "product": "Beken Flash Image Loader",
+  "productVersion": "4.1.7",
+  "buildVersion": "4.1.7.261014250",
+  "macosCliVersion": "4.1.7.250",
+  "releaseMetadataUrl": "https://dl.bekencorp.com/tools/bkfil/version.json",
+  "releaseMetadata": {
+    "macos": {
+      "version": "4.1.7.261014250",
+      "mainVersion": "4.1.7",
+      "buildNumber": "261014250",
+      "description": [
+        "refactor and support multi"
+      ],
+      "releaseTime": "2026-10-14T10:30:00+08:00",
+      "link": "https://dl.bekencorp.com/tools/bkfil/v4/gui/macos/BKFIL_macos_4.1.7.261014250.dmg"
+    },
+    "windows": {
+      "version": "4.1.7.261014250",
+      "mainVersion": "4.1.7",
+      "buildNumber": "261014250",
+      "description": [
+        "refactor and support multi"
+      ],
+      "releaseTime": "2026-10-14T10:30:00+08:00",
+      "link": "https://dl.bekencorp.com/tools/bkfil/v4/gui/windows/BKFIL_windows_4.1.7.261014250.zip"
+    },
+    "linux": {
+      "version": "4.1.7.261014250",
+      "mainVersion": "4.1.7",
+      "buildNumber": "261014250",
+      "description": [
+        "refactor and support multi"
+      ],
+      "releaseTime": "2026-10-14T10:30:00+08:00",
+      "link": "https://dl.bekencorp.com/tools/bkfil/v4/gui/linux/BKFIL_linux_4.1.7.261014250.zip"
+    }
+  },
+  "completePythonSourceLocated": false,
+  "maintainedSourcePackageVersion": "1.1.0.2.post2",
+  "platforms": {
+    "darwin-arm64": {
+      "filename": "bk_loader_macos_arm64_4.1.7.261014250.pkg",
+      "size": 14463822,
+      "sha256": "43ce289ef27ecb572eb3ac60367cd55925117a45c9ba38e3ecf6fa7148d44383",
+      "url": "https://dl.bekencorp.com/d/tools/bkfil/v4/cli/macos/bk_loader_macos_arm64_4.1.7.261014250.pkg",
+      "executableSha256": "04d69c91aafaba5d02b5e71647cb2591c972e5942e91ae6769930731fe4c501e",
+      "format": "pkg",
+      "executable": "Payload/bk_loader",
+      "packagingEvidence": "Python 3.9.6, PyInstaller archive, 133 bkutils bytecode modules",
+      "hostExecutionVerified": true
+    },
+    "darwin-x64": {
+      "filename": "bk_loader_macos_x86_64_4.1.7.261014250.pkg",
+      "size": 15664760,
+      "sha256": "60141b549c2ef2928a4eb51619f777fd448f7739c3b22ff907be378a48f58b7e",
+      "url": "https://dl.bekencorp.com/d/tools/bkfil/v4/cli/macos/bk_loader_macos_x86_64_4.1.7.261014250.pkg",
+      "executableSha256": "545306d93a2ca33057f1ac04b65513f50b56b4cb5ac6694064f4a01cc39a1e58",
+      "format": "pkg",
+      "executable": "Payload/bk_loader",
+      "packagingEvidence": "Python 3.9.6, PyInstaller archive, 133 bkutils bytecode modules",
+      "hostExecutionVerified": true
+    },
+    "linux-x64": {
+      "filename": "bk_loader_linux_4.1.7.261014250.zip",
+      "size": 12520749,
+      "sha256": "d42ef8af460eddd467f47197451f8896a61b0eaff7a0f1ef904042e6246479e2",
+      "url": "https://dl.bekencorp.com/d/tools/bkfil/v4/cli/linux/bk_loader_linux_4.1.7.261014250.zip",
+      "executableSha256": "7b7ab1e86144f37cadfe96c4a5bbc8cbec267cea1791583e34d591c647345401",
+      "format": "zip",
+      "executable": "bk_loader/bk_loader",
+      "packagingEvidence": "Nuitka onefile markers in standalone executable",
+      "hostExecutionVerified": true,
+      "executionEnvironment": "codex-firmwares-606d-bk-linux:validation x86_64 container, C.UTF-8 locale, network disabled, read-only executable mount"
+    },
+    "win32-x64": {
+      "filename": "bk_loader_windows_4.1.7.261014250.zip",
+      "size": 9850159,
+      "sha256": "bb3d7b258fa86d4542bc8727a5fbf137c5f9867cf335ccb8ba86c1d3d0affdaf",
+      "url": "https://dl.bekencorp.com/d/tools/bkfil/v4/cli/windows/bk_loader_windows_4.1.7.261014250.zip",
+      "format": "zip",
+      "executableSha256": "031e69b96031c058ff230d0bb65f892bdceba0504e6f02d082e38b7e7fc04ee6",
+      "executable": "bk_loader/bk_loader.exe",
+      "packagingEvidence": "Nuitka onefile markers in standalone executable",
+      "hostExecutionVerified": false
+    }
+  }
+}

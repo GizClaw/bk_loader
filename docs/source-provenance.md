@@ -5,12 +5,19 @@ bootloader and it does not run on the BK chip.
 
 ## Layout
 
-- `macos-arm64/`: vendor reference executable, version
-  `4.0.2+260129055` (embedded Python backend `v1.1.0.5`).
-- `src/`: runnable Python source. The base is Beken's publicly released
-  `v1.1.0.2` source, with locally maintained fixes and recovered
+- The historical `firmware-devenv/tools/bk_loader/macos-arm64/` directory
+  contained the vendor reference executable, version `4.0.2+260129055`
+  (embedded Python backend `v1.1.0.5`). That binary is not included here.
+- `src/`: runnable Python source imported from `firmware-devenv`. Its version
+  constant reports `v1.1.0.2`, with locally maintained fixes and recovered
   `v1.1.0.5` protocol/UI compatibility modules.
 - `tests/`: tests for the recovered protocol code.
+
+The source constant is not evidence of an official BKFIL product release or
+tag named `v1.1.0.2`. The separately checked official product build
+`4.1.7.261014250` reports CLI version `4.1.7.250`; see
+[the current upstream audit](upstream-4.1.7.md). Its Python source has not
+been imported or claimed as reconstructed in this repository.
 
 The Python backend supports a vendor Flutter desktop frontend through a small
 stdin/stdout JSON bridge. Flutter is not part of the UART protocol, is not

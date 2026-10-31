@@ -3,6 +3,8 @@
   "source_commit": "ff112cb8900a9c6398bfe5eea801e5139f182f34",
   "source_directory": "tools/bk_loader/src",
   "upstream_version": "v1.1.0.2",
+  "upstream_version_evidence": "Version constant in the imported Python source; corresponding official BKFIL product release is unverified",
   "reference_binary_version": "4.0.2+260129055",
-  "reference_binary_included": false
+  "reference_binary_included": false,
+  "latest_official_release_manifest": "upstream/4.1.7.json"
 }
