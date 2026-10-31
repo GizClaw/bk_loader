@@ -26,6 +26,11 @@ checksums and distinction between product and backend versions are recorded in
 [the upstream audit](docs/upstream-4.1.7.md) and its
 [machine-readable manifest](upstream/4.1.7.json).
 
+Partial source recovery has started under `upstream/4.1.7/source`. The version
+module has been reconstructed and checked against its Python 3.9 code object;
+the full CLI and download/controller source have not been recovered and
+validated. This does not change the maintained runtime or package version.
+
 The GizOS toolbox can install the official 4.1.7 runtime in its shared store.
 On macOS it expands the package payload without running the global installation
 scripts; a complete `_internal` directory remains alongside `bk_loader`.

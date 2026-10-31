@@ -86,5 +86,37 @@
       "packagingEvidence": "Nuitka onefile markers in standalone executable",
       "hostExecutionVerified": false
     }
+  },
+  "backendFallbackVersion": "v1.1.0.5",
+  "productVersionConfiguration": "config/version.yaml: 4.1.7+261014250",
+  "sourceRecovery": {
+    "complete": false,
+    "codeModules": 130,
+    "namespacePackages": 4,
+    "currentSourceModulesMatchingBytecode": 61,
+    "currentSourceModulesChanged": 51,
+    "newCodeModules": 18,
+    "verifiedReconstructedModules": [
+      "bkutils.common.version"
+    ],
+    "verification": "upstream/4.1.7/source-verification.json",
+    "unresolved": "CLI parsing, download/batch orchestration, configuration and chip controllers require faithful source recovery and validation"
+  },
+  "macosInstaller": {
+    "payloadEntries": 311,
+    "installLocation": "/usr/local/lib/bk_loader",
+    "symlink": "/usr/local/bin/bk_loader",
+    "scripts": [
+      "postinstall"
+    ],
+    "postinstallActions": [
+      "create binary directory",
+      "replace loader symlink",
+      "set executable permission"
+    ],
+    "additionalDownloads": false,
+    "installsSystemPython": false,
+    "installsGui": false,
+    "gizosExecutesInstallerScripts": false
   }
 }

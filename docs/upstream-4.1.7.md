@@ -13,6 +13,7 @@ maintained `1.1.0.2.post2` implementation.
 | `4.1.7.261014250` | Official full build and package version |
 | `4.1.7.250` | CLI version printed by both macOS executables |
 | `4.1.7+261014250` | Bundled macOS `config/version.yaml` version |
+| `v1.1.0.5` | Fallback constant in the newer version module; product configuration normally overrides it |
 | `1.1.0.2.post2` | GizClaw's existing source maintenance/package revision |
 | `v1.1.0.2` | Version constant in that imported older Python source |
 
@@ -56,6 +57,40 @@ release. A complete 4.1.7 Python source tree has not been located there or in
 the checked official GitHub repositories. Recovering a few modules would not
 establish a complete, buildable source upgrade. Do not rename the older
 maintenance source version to imply it contains the 4.1.7 implementation.
+
+The code objects have now been extracted for recovery. There are 130 executable
+Python modules including the CLI entry point, plus four namespace packages.
+Comparing the current maintained source under Python 3.9 found 61 modules whose
+compiled runtime fields match, 51 changed modules, and 18 missing modules.
+The changed/missing set includes CLI parsing, download/batch orchestration,
+configuration and chip controllers. Automated decompilation still produces
+unsupported exception handling, invalid syntax and incomplete function bodies.
+Passing a syntax check alone does not establish recovered behavior.
+
+The version module has been reconstructed separately in
+[`upstream/4.1.7/source`](../upstream/4.1.7/README.md). Recompiling it under
+Python 3.9 matches the vendor code object's runtime fields, excluding file and
+line information. Its `bk_ver` is still `v1.1.0.5`; `get_tool_version()` reads
+the product's `config/version.yaml` and turns `4.1.7+261014250` into
+`4.1.7.250`. This explains why the fallback backend number and product version
+cannot be equated.
+
+The partial reconstruction is not imported into the maintained runtime.
+The source package remains `1.1.0.2.post2` until the remaining source and its
+behavior have been recovered and validated.
+
+## Installer contents
+
+The macOS package installs 311 payload entries under `/usr/local/lib/bk_loader`.
+These include the CLI, its private Python 3.9 framework, Python extension
+modules, OpenSSL libraries and configuration. Its only `postinstall` script
+creates `/usr/local/bin/bk_loader` as a symlink to that executable and marks
+the executable runnable. It does not download packages, run pip, or install
+a separate GUI application.
+
+GizOS expands that payload without executing the script. The runtime stays
+under the configured shared root; the package's global installation paths
+are not used.
 
 ## GizOS integration
 

@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "python": "3.9.25",
+  "bytecodeSha256": "b52bdd2fb4b0508e58a02253c2ff6e929fb7923c0e7472d12f5da7b1fc7f0e5f",
+  "sourceSha256": "198c5ccf44bde7b2d614ae8b22539a2f25f7dde2517dfa1b9268483a0bbfc8ee",
+  "runtimeFieldsMatch": true,
+  "ignoredFields": [
+    "filename",
+    "first line",
+    "line tables"
+  ],
+  "module": "bkutils.common.version",
+  "source": "upstream/4.1.7/source/bkutils/common/version.py",
+  "officialArchiveSha256": "43ce289ef27ecb572eb3ac60367cd55925117a45c9ba38e3ecf6fa7148d44383"
+}
