@@ -7,7 +7,6 @@ from .v1_4 import RebootProtocol
 from .v1_4 import SetBaudrateProtocol
 from .v1_4 import StayRomProtocol
 from .v1_4 import writeRegProtocol
-
 from .v1_4 import GetFlashMidProtocol
 from .v1_4 import FlashCustomEraseProtocol
 from .v1_4 import FlashCustomReadProtocol
@@ -29,8 +28,6 @@ from .v1_4 import TsingtengFlashNVMReadProtocol
 from .v1_4 import TsingtengFlashNVMWriteProtocol
 from .v1_4 import FlashReadUniqueIDProtocol
 from .v1_4 import FlashReadSFDPProtocol
-
-
 from .bl2_link_check_protocol import Bl2LinkCheckProtocol
 from .check_crc_ext_protocol import CheckCrcExtProtocol
 from .chip_enter_secure_debug_protocol import ChipEnterSecureDebugProtocol
@@ -42,9 +39,11 @@ from .flash_erase_all_ext_protocol import FlashEraseAllExtProtocol
 from .flash_read_4k_ext_protocol import FlashRead4kExtProtocol
 from .flash_write_4k_ext_protocol import FlashWrite4kExtProtocol
 from .chip_enter_cbus_mode_protocol import ChipEnterCbusModeProtocol
+from .chip_enter_cbus_mode_dbg_protocol import ChipEnterCbusModeDbgProtocol
 from .chip_enter_cbus_mode_ext_protocol import ChipEnterCbusModeExtProtocol
 from .chip_exit_cbus_mode_protocol import ChipExitCbusModeProtocol
 from .chip_start_bl2_upgrade_protocol import ChipStartBL2UpgradeProtocol
 from .chip_stop_bl2_upgrade_protocol import ChipStopBL2UpgradeProtocol
 from .link_check_ext_protocol import LinkCheckExtProtocol
 from .chip_high_freq_enable_protocol import ChipHighFreqEnableProtocol
+from .chip_high_freq_set_protocol import ChipHighFreqSetProtocol

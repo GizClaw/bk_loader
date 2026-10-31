@@ -1,16 +1,16 @@
 from .base_boot_rom_protocol import BaseBootRomProtocol
 
-
 class ChipRequestSecureDebugProtocol(BaseBootRomProtocol):
 
-    def cmd(self, debug_mode, sign_data:list):
+    def cmd(self, debug_mode, sign_data: list):
         payload = [debug_mode]
+        payload.append(len(sign_data))
         payload.extend(sign_data)
-        return self.command_generate(0x51, payload)
+        return self.command_generate(81, payload)
 
     @property
     def expect_length(self):
-        return self.rx_expect_length(1)
+        raise Exception('not support.')
 
-    def response_check(self):
-        return True
+    def response_check(self, response_content):
+        raise Exception('not support.')

@@ -1,4 +1,5 @@
 import json
+import os
 import subprocess
 import sys
 import tempfile
@@ -13,9 +14,24 @@ from bkutils.flash_adapter.flash_config import FlashConfig
 
 
 class CliTest(unittest.TestCase):
+    def test_entry_point_emits_unicode_help_with_ascii_host_streams(self):
+        with tempfile.TemporaryDirectory() as directory:
+            result = subprocess.run(
+                [sys.executable, "-c", "from gizclaw_bk_loader import main; main()", "download", "--help"],
+                cwd=directory, input=b"", capture_output=True,
+                env={**os.environ, "PYTHONIOENCODING": "ascii", "PYTHONUTF8": "0"},
+            )
+            self.assertEqual(result.returncode, 0, result.stderr.decode("utf-8", errors="replace"))
+            output = result.stdout.decode("utf-8")
+            self.assertIn("Usage: bk_loader download", output)
+            self.assertTrue(any(ord(character) > 127 for character in output))
+
     def test_help_and_version_do_not_open_a_serial_port(self):
         with patch("serial.Serial") as serial:
-            for args in [["--help"], ["--version"], ["download", "--help"], ["erase", "--help"]]:
+            for args in [
+                ["--help"], ["--version"], ["download", "--help"], ["erase", "--help"],
+                ["read", "--help"], ["secure", "--help"], ["inject_key", "--help"],
+            ]:
                 result = CliRunner().invoke(cli, args)
                 self.assertEqual(result.exit_code, 0, result.output)
             serial.assert_not_called()
@@ -36,16 +52,18 @@ class CliTest(unittest.TestCase):
                 cwd=directory, capture_output=True, text=True, check=True,
             )
             self.assertGreater(json.loads(result.stdout.splitlines()[0])["entries"], 0)
-            self.assertIn("bk_loader.py,v1.1.0.2", result.stdout)
+            self.assertIn("bk_loader, version 4.1.7.250", result.stdout)
 
     def test_selftest_checks_runtime_data_and_native_crypto_without_uart(self):
         with patch("serial.Serial") as serial:
             result = CliRunner().invoke(cli, ["tools", "selftest"])
             self.assertEqual(result.exit_code, 0, result.output)
             checked = json.loads(result.output)
-            self.assertEqual(checked["packageVersion"], "1.1.0.2.post2")
+            self.assertEqual(checked["packageVersion"], "4.1.7")
+            self.assertEqual(checked["upstreamVersion"], "4.1.7.250")
             self.assertGreater(checked["flashEntries"], 0)
             self.assertEqual(checked["crypto"], "ok")
+            self.assertEqual(checked["signing"], "ok")
             serial.assert_not_called()
 
 

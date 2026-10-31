@@ -1,8 +1,54 @@
 {
-  "source_repository": "h2vivi/firmware-devenv",
-  "source_commit": "ff112cb8900a9c6398bfe5eea801e5139f182f34",
-  "source_directory": "tools/bk_loader/src",
-  "upstream_version": "v1.1.0.2",
-  "reference_binary_version": "4.0.2+260129055",
-  "reference_binary_included": false
+  "schema": 2,
+  "sourceKind": "recovered-python",
+  "upstreamProduct": "Beken Flash Image Loader",
+  "upstreamProductVersion": "4.1.7",
+  "upstreamBuildVersion": "4.1.7.261014250",
+  "upstreamCliVersion": "4.1.7.250",
+  "upstreamBackendFallbackVersion": "v1.1.0.5",
+  "packageVersion": "4.1.7",
+  "sourceSnapshot": "upstream/4.1.7/source",
+  "sourceVerification": "upstream/4.1.7/source-verification.json",
+  "officialReleaseManifest": "upstream/4.1.7.json",
+  "referenceBinaryIncluded": false,
+  "runtimeAdaptations": [
+    {
+      "files": [
+        "src/bkutils/common/version.py",
+        "src/bkutils/common/bk_out_config.py",
+        "src/bkutils/flash_adapter/flash_config.py"
+      ],
+      "change": "Locate packaged YAML resources under bkutils/config instead of top-level config."
+    },
+    {
+      "files": [
+        "src/bkutils/common/initiator.py",
+        "src/bkutils/common/common.py",
+        "src/bkutils/common/bk_global.py",
+        "src/bkutils/bk_log/log_utils.py"
+      ],
+      "change": "Share the unchanged INITIATOR enum without circular imports between configuration, logging and common helpers."
+    },
+    {
+      "files": [
+        "src/gizclaw_bk_loader.py"
+      ],
+      "change": "Add an offline JSON selftest for resources, AES and P-256; suppress its tools banner and configure UTF-8 CLI streams for redirected Windows output."
+    },
+    {
+      "files": [
+        "src/bkutils/secure_debug/secure_debug.py"
+      ],
+      "change": "Resolve the default private key beside the supplied public key; verification uses only a public key and missing public keys raise an exception."
+    }
+  ],
+  "previousSource": {
+    "source_repository": "h2vivi/firmware-devenv",
+    "source_commit": "ff112cb8900a9c6398bfe5eea801e5139f182f34",
+    "source_directory": "tools/bk_loader/src",
+    "upstream_version": "v1.1.0.2",
+    "upstream_version_evidence": "Version constant in the imported Python source; corresponding official BKFIL product release is unverified",
+    "reference_binary_version": "4.0.2+260129055",
+    "reference_binary_included": false
+  }
 }
