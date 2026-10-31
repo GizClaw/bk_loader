@@ -1,81 +1,80 @@
-# BK Loader
+# Source provenance
 
-`bk_loader` is Beken's host-side UART flashing utility. It is not a target
-bootloader and it does not run on the BK chip.
+`bk_loader` is Beken's host-side UART flashing utility. GizClaw now maintains
+the complete Python implementation recovered from official BKFIL 4.1.7,
+build 4.1.7.261014250. The source package is version 4.1.7 and its CLI prints
+`bk_loader, version 4.1.7.250`.
 
-## Layout
+## Source layout and verification
 
-- The historical `firmware-devenv/tools/bk_loader/macos-arm64/` directory
-  contained the vendor reference executable, version `4.0.2+260129055`
-  (embedded Python backend `v1.1.0.5`). That binary is not included here.
-- `src/`: runnable Python source imported from `firmware-devenv`. Its version
-  constant reports `v1.1.0.2`, with locally maintained fixes and recovered
-  `v1.1.0.5` protocol/UI compatibility modules.
-- `tests/`: tests for the recovered protocol code.
+- `upstream/4.1.7/source/`: the unadapted recovery snapshot, containing 130
+  executable modules and four empty namespace packages.
+- `upstream/4.1.7/config/`: the four upstream YAML resources.
+- `upstream/4.1.7/source-verification.json`: per-module source and original-code
+  hashes plus runtime-field and instruction/control-flow comparisons.
+- `src/`: the runnable maintained package and its explicit adaptations.
+- `SOURCE.json`: current provenance, maintenance deltas and previous lineage.
 
-The source constant is not evidence of an official BKFIL product release or
-tag named `v1.1.0.2`. The separately checked official product build
-`4.1.7.261014250` reports CLI version `4.1.7.250`; see
-[the current upstream audit](upstream-4.1.7.md). Its Python source has not
-been imported or claimed as reconstructed in this repository.
+111 recovered modules recompile to identical runtime fields under Python 3.9,
+excluding filenames and line information. All 130 pass the typed instruction
+and control-flow comparison, including nested code and exception handlers.
+The complete entry point and download, batch, injection, secure-debug and
+chip-controller services are recovered. Reproduction instructions and
+comparison limits are in [the snapshot README](../upstream/4.1.7/README.md).
 
-The Python backend supports a vendor Flutter desktop frontend through a small
-stdin/stdout JSON bridge. Flutter is not part of the UART protocol, is not
-needed by the CLI, and no Flutter runtime is required for `download`, `erase`,
-or `read`. The `pubspec.lock` found in the packaged executable is frontend
-packaging metadata, so it is intentionally not copied into the source tree.
+Recovery is from official PyInstaller bytecode, not an upstream Git tag or
+published source archive. Original comments and formatting cannot be
+reconstructed from bytecode. The vendor executable is not committed here.
 
-## Run from source
+## Maintained runtime changes
 
-```sh
-make -C tools/bk_loader setup
-make -C tools/bk_loader help
-make -C tools/bk_loader run ARGS='tools list_ports'
-```
+The unadapted snapshot is preserved so maintenance changes remain reviewable:
 
-The Firmwares integration currently uses these operations:
+1. Version, flash-database and runtime configuration lookup use
+   `bkutils/config` so installed wheels and PyInstaller executables work
+   outside the checkout.
+2. The unchanged `INITIATOR` enum lives in a small shared module and remains
+   re-exported by `common`. This breaks the vendor's import cycle between
+   common helpers, logging and configuration, which otherwise prevents fresh
+   direct imports of `FlashConfig`.
+3. The distribution entry point adds `tools selftest`, returning JSON and
+   checking bundled data, native AES and P-256 signing without serial access.
+   It suppresses the upstream tools banner for that one command.
+4. Secure debug resolves the default private key next to the supplied public
+   key. Public-key verification no longer requires an unrelated private key
+   in the installed module directory; missing public keys raise a normal
+   exception. No key material is bundled.
 
-```sh
-make -C tools/bk_loader run ARGS='download -p PORT -b 500000 --reset_type 0 --link_type 0 -r -i all-app.bin -s 0x0'
-make -C tools/bk_loader run ARGS='erase -p PORT -b 500000 --reset_type 0 --link_type 0 -c -r'
-```
+Upstream 4.1.7 already places the generic long-response status at byte 9,
+matching the previous maintenance fix. Key-injection replies now include
+an additional `0xf4` byte: command/status/data are at indexes 9/10/11.
+The handshake response echoes `0x01`, and the start command ends in two CRLF
+pairs. The AES-key reply handler preserves upstream's format-only acceptance;
+the random-key handler checks status and echoed bytes. Offline tests record
+these different contracts.
 
-`erase` and `download` modify a connected device. Tests in this repository do
-not invoke either operation.
+## Earlier lineage
 
-## Recovery status
+The earlier `1.1.0.2.post2` package imported Python from
+`h2vivi/firmware-devenv`, commit
+`ff112cb8900a9c6398bfe5eea801e5139f182f34`,
+directory `tools/bk_loader/src`. That source's backend constant was
+`v1.1.0.2`; the old reference executable was product version
+`4.0.2+260129055` with fallback backend `v1.1.0.5`.
+Those backend constants do not establish an official BKFIL product version.
+Historical optional Tizen modules and diagnostic scripts are retained but
+are outside the recovered 4.1.7 module inventory and automated device tests.
 
-The packaged executable is a PyInstaller Python 3.9 bundle. Comparing its
-embedded code objects with the public/local source found 98 common modules;
-58 are bytecode-identical and 79 retain identical top-level code/name tables.
-This is strong evidence that the public tree is the correct source lineage,
-but it does not make the whole tree an exact reconstruction of `v1.1.0.5`.
+## Validation boundary
 
-Recovered and tested here:
+Tests import every recovered module and exercise installed/frozen CLI help,
+configuration, packet framing, mocked multi-entry writes, failed bus cleanup,
+key-injection orchestration and real P-256 signing with a mocked transport.
+They do not flash, erase, reset, provision or enumerate physical devices.
 
-- the complete public `v1.1.0.2` CLI/protocol/chip-controller tree;
-- the packaged flash database and runtime tuning configuration;
-- long application command framing;
-- key-injection start, handshake, AES/random-key and secure-boot protocols;
-- the optional Flutter JSON data and stdin/stdout bridge;
-- global initiator/log configuration state.
+The recovered source includes the optional stdin/stdout bridge for a Flutter
+frontend. No Flutter runtime or frontend metadata is needed by the CLI.
+The package's `pubspec.lock` is therefore not included among runtime data.
 
-The packaged `v1.1.0.5` bytecode reads both the long-response command and
-status from byte 8. Its own documented frame places status at byte 9; the
-source version fixes that off-by-one and covers it with an echo-response test.
-
-Still reference-binary-only:
-
-- the `v1.1.0.5` secure-debug and key-injection action orchestration;
-- BK5886, BK7236N/BK7236N-security and BK7311 controller deltas;
-- some newer retry, logging and download-flow changes.
-
-Those modules have complex Python 3.9 control flow. Automated decompilers
-mis-reconstruct branches and local variables, so they are deliberately not
-presented as trustworthy source. The checked-in vendor executable remains the
-compatibility reference for those functions. The ordinary BK7258 CLI path used
-by Firmwares does not require Flutter or the new key-injection commands.
-
-The public source contains a Beken copyright header allowing BSD-style
-distribution, while its historical `setup.py` declares MIT. Both upstream
-notices are preserved; no broader relicensing claim is made here.
+Original Beken copyright and historical BSD/MIT declarations are retained.
+See [NOTICE.md](../NOTICE.md) for the original declarations and scope.

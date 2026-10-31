@@ -39,7 +39,7 @@
     }
   },
   "completePythonSourceLocated": false,
-  "maintainedSourcePackageVersion": "1.1.0.2.post2",
+  "maintainedSourcePackageVersion": "4.1.7",
   "platforms": {
     "darwin-arm64": {
       "filename": "bk_loader_macos_arm64_4.1.7.261014250.pkg",
@@ -90,17 +90,22 @@
   "backendFallbackVersion": "v1.1.0.5",
   "productVersionConfiguration": "config/version.yaml: 4.1.7+261014250",
   "sourceRecovery": {
-    "complete": false,
+    "complete": true,
     "codeModules": 130,
     "namespacePackages": 4,
-    "currentSourceModulesMatchingBytecode": 61,
-    "currentSourceModulesChanged": 51,
-    "newCodeModules": 18,
-    "verifiedReconstructedModules": [
-      "bkutils.common.version"
-    ],
+    "initialSourceComparison": {
+      "matchingModules": 61,
+      "changedModules": 51,
+      "missingModules": 18
+    },
+    "recoveredModules": 130,
+    "exactRuntimeFieldMatches": 111,
+    "instructionControlFlowMatches": 130,
+    "source": "upstream/4.1.7/source",
+    "configuration": "upstream/4.1.7/config",
     "verification": "upstream/4.1.7/source-verification.json",
-    "unresolved": "CLI parsing, download/batch orchestration, configuration and chip controllers require faithful source recovery and validation"
+    "method": "PyInstaller extraction, decompilation and manual recovery, then typed instruction/control-flow verification under Python 3.9",
+    "runtimeAdaptations": "SOURCE.json"
   },
   "macosInstaller": {
     "payloadEntries": 311,

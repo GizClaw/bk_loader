@@ -1,0 +1,38 @@
+# 20260204 添加支持自定义bin解析
+# 暂时不用，保留后续扩展使用
+supported_bin_config:
+  # 是否支持无magic word的bin
+  support_no_magic_word: true
+  default_need_crc_check: false
+  default_header_type: 0
+  default_link_check: 0 # 0: bootrom, 1: bootloader
+  # magic word的配置
+  magic_word_config:
+    - magic_word: "BL2SAMEN" # magic word
+      link_check: 0 
+      header_type: 0
+      # 是否需要crc校验
+      need_crc_check: true
+      # crc校验的参数
+      crc_check_info:
+        start_addr: 0x400 # 起始地址
+        oplen: 0x1000 # 长度
+    - magic_word: "BL1SAMUN" # magic word
+      link_check: 0 
+      header_type: 0
+      # 是否需要crc校验
+      need_crc_check: true
+      # crc校验的参数
+      crc_check_info:
+        start_addr: 0x400 # 起始地址
+        oplen: 0x1000 # 长度
+
+customer_version: "2"
+bin_parser:
+  name: "SAMSUNG_BIN_PARSER"
+  magic_words: 
+    - "BL2SAMEN"
+    - "BL1SAMUN"
+  crc_check_info:
+    start_addr: "0x400"
+    oplen: "0x1000"

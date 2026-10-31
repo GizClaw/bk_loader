@@ -1,43 +1,30 @@
 # bk_loader
 
 Beken's UART flashing utility, maintained as Python source by GizClaw.
-The installed command is `bk_loader`. It runs on the host computer and talks
-to a Beken chip over serial.
+The command runs on the host computer and talks to a Beken chip over serial.
 
-The imported Python source reports backend version `v1.1.0.2` and was
-maintained in `h2vivi/firmware-devenv`. This repository includes the Python CLI,
-protocol and chip-controller modules, flash database, runtime configuration,
-and offline regression tests. Releases freeze this source into standalone
-executables with PyInstaller. Binaries and bundled Python live in Release
-assets; firmware images are not part of this repository or its releases.
+This source release is recovered from official **BKFIL 4.1.7**, build
+**4.1.7.261014250**. It replaces the older `1.1.0.2.post2` implementation.
+The package version is `4.1.7`; `bk_loader --version` reports
+`bk_loader, version 4.1.7.250`, just like the official macOS CLI.
 
-## Official BKFIL 4.1.7
+All **130 executable Python modules** and four namespace packages have been
+recovered, including the complete CLI, batch/single-port download services,
+secure-debug and key-injection services, protocols and chip controllers.
+Recompilation under Python 3.9 matches the vendor's runtime fields for 111
+modules. All 130 match the typed instructions and control-flow graph, allowing
+only documented compiler-layout differences. The checked report records every
+module's source and original-bytecode hash.
 
-Beken now distributes native CLI packages for macOS arm64/x86_64, Linux x86_64
-and Windows x86_64. The verified product build is `4.1.7.261014250`; its macOS
-CLI reports `bk_loader, version 4.1.7.250`. The official macOS package contains
-a Python 3.9.6 runtime and PyInstaller bytecode. The Linux and Windows ZIPs
-contain standalone executables, with Nuitka onefile markers.
-
-A complete Python source distribution for 4.1.7 has not been located in the
-checked official directories and packages. This repository's maintained
-`1.1.0.2.post2` source package is not relabeled as 4.1.7. The verified downloads,
-checksums and distinction between product and backend versions are recorded in
-[the upstream audit](docs/upstream-4.1.7.md) and its
-[machine-readable manifest](upstream/4.1.7.json).
-
-Partial source recovery has started under `upstream/4.1.7/source`. The version
-module has been reconstructed and checked against its Python 3.9 code object;
-the full CLI and download/controller source have not been recovered and
-validated. This does not change the maintained runtime or package version.
-
-The GizOS toolbox can install the official 4.1.7 runtime in its shared store.
-On macOS it expands the package payload without running the global installation
-scripts; a complete `_internal` directory remains alongside `bk_loader`.
+See [source provenance](docs/source-provenance.md),
+[the recovery snapshot and verification instructions](upstream/4.1.7/README.md)
+and [the official package audit](docs/upstream-4.1.7.md).
+The repository contains editable Python and YAML resources. It does not
+install or execute the vendor `.pkg` to build GizClaw releases.
 
 ## Install a Release executable
 
-Each tagged release builds and tests these archives:
+Release builds produce these standalone archives:
 
 | Host | Archive suffix | Command inside |
 | --- | --- | --- |
@@ -47,47 +34,49 @@ Each tagged release builds and tests these archives:
 | Linux arm64 | `linux-arm64.tar.gz` | `bin/bk_loader` |
 | Windows x86_64 | `win32-x64.zip` | `bin/bk_loader.exe` |
 
-Archive names are `bk-loader-<version>-<host>.<format>`. Download the archive
-for your computer from [Releases](https://github.com/GizClaw/bk_loader/releases),
-verify it against `SHA256SUMS`, extract it, and add its `bin` directory to PATH.
-No Python or pip installation is needed to run these executables. Linux
-executables are built on Ubuntu 22.04 (glibc 2.35); older glibc is unsupported.
+Archive names are `bk-loader-<version>-<host>.<format>`. Download an available
+version from [Releases](https://github.com/GizClaw/bk_loader/releases), verify
+it against `SHA256SUMS`, extract it, and add its `bin` directory to PATH.
+No Python or pip installation is needed to run these executables. Linux builds
+use Ubuntu 22.04 (glibc 2.35); older glibc is unsupported.
 
-The release's `index.json` records the source commit, platform, archive size,
-archive SHA-256, executable SHA-256 and offline self-test result. Publishing
-requires successful builds and tests on all five native platforms. Each build
-runs the executable outside the checkout, without host Python on PATH, and
-checks its embedded flash database, runtime configuration and native AES code.
-
-GizOS SDK setup installs the official 4.1.7 loader automatically. To choose
-this repository's older maintained executable instead, use
-`gizos install bk_loader 1.1.0.2.post2`. GizOS verifies archive and executable
-SHA-256 values, reuses the shared installation, and exports `BK_LOADER_BIN`
-and the executable's directory on PATH. A firmware worktree does not need its
-own loader or Python environment.
+The release's `index.json` records the source commit, host, archive size and
+SHA-256, executable SHA-256 and offline self-test results. Publication requires
+successful native builds and tests on all five platforms. Each build runs
+outside the checkout with host Python removed from PATH.
 
 ```sh
 bk_loader --version
 bk_loader tools selftest
 ```
 
-## Install from source for development
+`tools selftest` returns JSON describing the package/upstream versions, bundled
+flash database, AES check and P-256 signing check. It does not access a device.
 
-Python 3.10 or newer is required:
+GizOS installs BK Loader in its shared tool directory and exports
+`BK_LOADER_BIN` and its directory on PATH. Firmware worktrees share that
+installation. Its current catalog uses the official 4.1.7 runtime; it can
+switch to these source-built archives after their release checksums are
+published.
+
+## Install from source
+
+Python 3.10 or newer is required to run the maintained package:
 
 ```sh
 git clone https://github.com/GizClaw/bk_loader.git
 cd bk_loader
 python3 -m venv .venv
 .venv/bin/python -m pip install .
-.venv/bin/bk_loader --help
 .venv/bin/bk_loader --version
+.venv/bin/bk_loader tools selftest
 ```
 
 On Windows, use `.venv\Scripts\python.exe` and
-`.venv\Scripts\bk_loader.exe`. The package installs the flash database and
-configuration alongside the Python modules, so the command works from any
-directory.
+`.venv\Scripts\bk_loader.exe`. The wheel installs configuration and the flash
+database alongside the modules, so it works from another directory.
+Runtime dependencies include Click, PyYAML, PySerial, PyCryptodome and
+cryptography. Decompilers and their models are not runtime dependencies.
 
 ## Commands
 
@@ -97,55 +86,46 @@ bk_loader tools list_ports
 bk_loader download --help
 bk_loader erase --help
 bk_loader read --help
+bk_loader secure --help
+bk_loader inject_key --help
 ```
 
-`list_ports` enumerates serial ports. The `download`, `erase`, `read`, reset
-and authorization commands operate on the explicitly selected device; review
-their options and the board's recovery procedure before using them.
-The CLI does not require Flutter.
-
-For example, the existing BK7258 loader integration uses:
+The CLI includes the upstream batch workflow and its stdin/stdout bridge for
+an optional Flutter frontend. Flutter is not required by the CLI.
+For example, the BK7258 firmware integration uses:
 
 ```sh
 bk_loader download -p PORT -b 500000 --reset_type 0 --link_type 0 -r -i all-app.bin -s 0x0
 ```
 
-The full upstream command reference is in [docs/upstream-cli.md](docs/upstream-cli.md).
+Download, erase, reset and provisioning commands operate on the selected
+physical device. Source recovery and offline tests do not establish
+physical-device acceptance for every chip or security operation.
+The previous CLI reference is retained in
+[docs/upstream-cli.md](docs/upstream-cli.md); use the executable's help for the
+current 4.1.7 options and defaults.
 
-## Source and compatibility
+For secure debug, `--key_path` selects the public PEM file. Keep the matching
+private key in the same directory as `ec_256_privkey.pem`. No private keys are
+bundled. Public-key verification does not require a private key.
 
-The maintained Python implementation is not a byte-for-byte reconstruction of
-the vendor's newer macOS reference application. Ordinary BK7258 CLI
-download/read/erase paths are present. The reference application's newer
-secure-debug, key-injection orchestration and some newer chip-controller
-changes have not been reconstructed.
-
-The recovered packet-framing and UI bridge modules are tested independently;
-their presence does not establish support for every newer reference-binary
-operation. Original source lineage and recovery scope are recorded in
-[docs/source-provenance.md](docs/source-provenance.md) and [SOURCE.json](SOURCE.json).
-Package version `1.1.0.2.post2` identifies GizClaw's packaging revision; the
-upstream CLI version banner remains `bk_loader.py,v1.1.0.2`.
-
-## Tests
+## Tests and builds
 
 ```sh
 .venv/bin/python -m unittest discover -s tests -v
-```
-
-CI runs these offline tests and freezes a native executable on every supported
-platform. The tests exercise protocol framing, response validation, runtime
-configuration and the installed/frozen CLI. They do not open a device or flash,
-erase, reset or provision a chip. Vendor diagnostic scripts under
-`bkutils/protocol/test` are retained as source and are outside the automatic
-test suite.
-
-To build the same host executable locally:
-
-```sh
 .venv/bin/python -m pip install -r requirements-build.txt .
 .venv/bin/python scripts/build_binary.py
 ```
+
+Tests cover recovery-report hashes, importability, framing, runtime data,
+multi-entry OTP/eFuse processing, failed download/read/erase cleanup,
+key-injection success/failure and a real P-256 signature in a mocked
+secure-debug exchange. Serial transports are replaced with test doubles;
+no connected device is used.
+
+The native executable self-test checks both crypto libraries and the bundled
+resources without host Python. CI also checks CLI help for download, read,
+erase, secure debug and key injection.
 
 Maintainers publish an immutable version by tagging its source commit
 `v<project-version>`. The Release workflow rebuilds and verifies the complete
@@ -153,6 +133,7 @@ matrix before publishing archives, `index.json` and `SHA256SUMS`.
 
 ## Notices
 
-Original Beken copyright and licensing declarations are preserved. The source
-entry declares BSD distribution while the historical setup metadata declares
-MIT; [NOTICE.md](NOTICE.md) records both without replacing either declaration.
+The Beken copyright and historical BSD/MIT declarations are retained in
+[NOTICE.md](NOTICE.md). GizClaw's packaging and maintenance code uses the
+BSD 3-Clause terms in `LICENSE`. Recovery reconstructs executable behavior;
+it does not restore original comments or assert a new license for Beken code.

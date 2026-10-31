@@ -1,5 +1,4 @@
 import unittest
-import logging
 
 from bkutils.protocol.app.base_app_protocol import BaseAppProtocol
 from bkutils.protocol.app.inject_key_finish_handshake_protocol import (
@@ -18,7 +17,6 @@ from bkutils.protocol.app.inject_key_write_aes_key_protocol import (
 from bkutils.protocol.app.inject_key_write_random_key_protocol import (
     InjectKeyWriteRandomKeyProtocol,
 )
-from bkutils.bk_log.log_utils import BKLog
 from bkutils.common.bk_out_config import (
     BkOutConfig,
     BkReadFlashConfig,
@@ -42,7 +40,7 @@ class ConcreteProtocol(BaseAppProtocol):
 class InjectKeyProtocolTest(unittest.TestCase):
     def test_start_command(self):
         protocol = InjectKeyStartProtocol()
-        self.assertEqual(protocol.cmd(), b'insert_key_start\r\n')
+        self.assertEqual(protocol.cmd(), b'insert_key_start\r\n\r\n')
         self.assertEqual(protocol.expect_length, 0)
 
     def test_short_commands(self):
@@ -61,7 +59,7 @@ class InjectKeyProtocolTest(unittest.TestCase):
 
     def test_short_response_validation(self):
         protocol = InjectKeyHandshakeProtocol()
-        good = bytes([0x04, 0x0e, 0x05, 0x01, 0xe0, 0xfc, 0x00, 0x00])
+        good = bytes([0x04, 0x0e, 0x05, 0x01, 0xe0, 0xfc, 0x01, 0x00])
         self.assertEqual(protocol.response_check(good), (True, None))
         self.assertEqual(protocol.response_check(good[:-1]), (False, None))
 
@@ -72,19 +70,31 @@ class InjectKeyProtocolTest(unittest.TestCase):
             bytes([0x01, 0xe0, 0xfc, 0xff, 0xf4, 0x03, 0x00, 0x26, 0xaa, 0xbb]),
         )
 
-    def test_key_echo_validation(self):
+    def test_417_random_key_reply_has_f4_and_validates_status_and_echo(self):
         key = bytes(range(16))
-        for protocol_type, command in (
-            (InjectKeyWriteAesKeyProtocol, 0x26),
-            (InjectKeyWriteRandomKeyProtocol, 0x27),
-        ):
-            protocol = protocol_type()
-            response = bytes([
-                0x04, 0x0e, 0xff, 0x01, 0xe0, 0xfc,
-                len(key) + 2, 0x00, command, 0x00,
-            ]) + key
-            self.assertEqual(protocol.response_check(response, key), (True, key))
-            self.assertEqual(protocol.response_check(response, b'wrong'), (False, None))
+        protocol = InjectKeyWriteRandomKeyProtocol()
+        response = bytes([
+            0x04, 0x0e, 0xff, 0x01, 0xe0, 0xfc, 0xf4,
+            len(key) + 2, 0x00, 0x27, 0x00,
+        ]) + key
+        self.assertEqual(protocol.expect_length(len(key)), len(response))
+        self.assertEqual(protocol.response_check(response, key), (True, key))
+        self.assertEqual(protocol.response_check(response, b'wrong'), (False, None))
+        failed = response[:10] + b'\x01' + response[11:]
+        self.assertEqual(protocol.response_check(failed, key), (False, None))
+        self.assertEqual(protocol.response_check(response[:10], key), (False, None))
+
+    def test_417_aes_reply_preserves_upstreams_format_only_acceptance(self):
+        protocol = InjectKeyWriteAesKeyProtocol()
+        response = bytes([0x04, 0x0e, 0xff, 0x01, 0xe0, 0xfc, 0xf4, 0x02, 0x00, 0x26, 0x00])
+        self.assertEqual(protocol.response_check(response, b'key'), (True, None))
+        self.assertEqual(protocol.response_check(response[:-1], b'key'), (False, None))
+        self.assertEqual(protocol.response_check(response[:9] + b'\x27\x00', b'key'), (False, None))
+
+    def test_long_response_status_is_separate_from_command(self):
+        protocol = ConcreteProtocol()
+        response = bytes([0x04, 0x0e, 0xff, 0x01, 0xe0, 0xfc, 0x02, 0x00, 0x26, 0x00])
+        self.assertEqual(protocol.get_response_status_code(response, is_long_cmd=True), 0)
 
     def test_ui_json_contract(self):
         data = OutputData(MsgType.PROGRESS, 'writing', 25)
@@ -96,9 +106,7 @@ class InjectKeyProtocolTest(unittest.TestCase):
         self.assertIn('/dev/cu.test', ports)
 
     def test_packaged_runtime_configuration(self):
-        if None not in BKLog.LOGGER_MAP:
-            BKLog(logger_level=logging.CRITICAL, threading_id=None)
-        BkOutConfig()
+        BkOutConfig(None)
         self.assertEqual(BkSetBaudrateConfig.switch_delay_ms, 40)
         self.assertEqual(BkSetBaudrateConfig.wait_response_timeout_ms, 400)
         self.assertEqual(BkReadFlashConfig.retry_count, 20)

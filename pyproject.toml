@@ -4,13 +4,14 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "gizclaw-bk-loader"
-version = "1.1.0.2.post2"
+version = "4.1.7"
 description = "Beken UART loader maintained by GizClaw"
 readme = "README.md"
 requires-python = ">=3.10"
 license = {text = "Preserved Beken BSD/MIT declarations; see NOTICE.md"}
 dependencies = [
   "click==8.4.2",
+  "cryptography==46.0.3",
   "pycryptodome==3.23.0",
   "pyserial==3.5",
   "PyYAML==6.0.3",

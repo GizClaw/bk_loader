@@ -1,15 +1,1081 @@
 {
   "schema": 1,
   "python": "3.9.25",
-  "bytecodeSha256": "b52bdd2fb4b0508e58a02253c2ff6e929fb7923c0e7472d12f5da7b1fc7f0e5f",
-  "sourceSha256": "198c5ccf44bde7b2d614ae8b22539a2f25f7dde2517dfa1b9268483a0bbfc8ee",
-  "runtimeFieldsMatch": true,
-  "ignoredFields": [
-    "filename",
-    "first line",
-    "line tables"
+  "bytecodeMagic": "610d0d0a",
+  "productVersion": "4.1.7",
+  "buildVersion": "4.1.7.261014250",
+  "executableSha256": "04d69c91aafaba5d02b5e71647cb2591c972e5942e91ae6769930731fe4c501e",
+  "codeModules": 130,
+  "namespacePackages": [
+    "bkutils/__init__.py",
+    "bkutils/private/__init__.py",
+    "bkutils/protocol/__init__.py",
+    "bkutils/secure_debug/__init__.py"
   ],
-  "module": "bkutils.common.version",
-  "source": "upstream/4.1.7/source/bkutils/common/version.py",
-  "officialArchiveSha256": "43ce289ef27ecb572eb3ac60367cd55925117a45c9ba38e3ecf6fa7148d44383"
+  "runtimeFieldsMatches": 111,
+  "instructionControlFlowMatches": 130,
+  "complete": true,
+  "comparison": {
+    "exactModeIgnores": [
+      "filenames",
+      "first lines",
+      "line tables"
+    ],
+    "controlFlowModeAlsoIgnores": [
+      "constant/name table indexes",
+      "NOP and EXTENDED_ARG",
+      "unconditional jump trampolines",
+      "unreachable return cleanup"
+    ],
+    "preserves": [
+      "typed constants",
+      "arguments and locals",
+      "defaults and docstrings",
+      "operations",
+      "branch and handler edges",
+      "nested code objects"
+    ]
+  },
+  "modules": [
+    {
+      "module": "bkutils.action_service",
+      "source": "bkutils/action_service/__init__.py",
+      "originalMarshalSha256": "ab8b846dbc74800bee7102d4b7a5a07bf08238e9eaa31ed12b2353effb4c6c1a",
+      "sourceSha256": "671dd736912fdfb0d00a154d0eab646037ca2cecb8361082b4429ae97d07bc73",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.action_service.action_base",
+      "source": "bkutils/action_service/action_base.py",
+      "originalMarshalSha256": "408386681bc6bfac302583dec2fbafd2a9545d08babf17c49013cf44b3bc45d7",
+      "sourceSha256": "976d0ffe1e17f30d8995e139c5e98dd538e271e2d8948bff982ef737786d66c4",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.action_service.authorize",
+      "source": "bkutils/action_service/authorize.py",
+      "originalMarshalSha256": "b53bcae361345adbeb23575ac14c593bd3285406aa0cbe785e4ee94478d766ee",
+      "sourceSha256": "285a4cdf9a563c8c4be6652dc3ef1152025182d079348834bbe55be88c66af26",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.action_service.batch_download",
+      "source": "bkutils/action_service/batch_download.py",
+      "originalMarshalSha256": "7f4b5aebb4ffb77b192b1a98acb35444947d67e783767f402bbdf13370321712",
+      "sourceSha256": "a70e4457a33926706d11aeeb6211cfa26096b31f7414744799eb67f25c2f2496",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.action_service.download",
+      "source": "bkutils/action_service/download.py",
+      "originalMarshalSha256": "a7a60d8a9fe8742c28e250f387748ac85b41d5f2d8e26d87ce217c7b6178709d",
+      "sourceSha256": "e11f65684665f8c58269364edf475d20de2f299a7cd67f54140c303d75a93fef",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.action_service.dump",
+      "source": "bkutils/action_service/dump.py",
+      "originalMarshalSha256": "1809ea43aaed945cbb7359936ae2a27523e87ca0ca3f4ec230214cd190d4017a",
+      "sourceSha256": "3718fdfaa0027734a3faa9dc88a1ab1a904e4f0fd5b22232b377ea06c41b4e87",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.action_service.erase",
+      "source": "bkutils/action_service/erase.py",
+      "originalMarshalSha256": "c38220d369cf5be3e039028a94599dc20d2a8a8141372a14281252664bfbae8f",
+      "sourceSha256": "5e235944f3a5c31b123f563467f860a16ba276a3f617c7f1a870a1dfe530af7d",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.action_service.inject_key",
+      "source": "bkutils/action_service/inject_key.py",
+      "originalMarshalSha256": "9e4ea5b80a6790ab41aa067c4fadbdff811cb74522c62728e8d03567d61a7ec5",
+      "sourceSha256": "83a60fe56cc57081ffa34ba29199260bb47035f1644e343c894aa6ec11951703",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.action_service.secure",
+      "source": "bkutils/action_service/secure.py",
+      "originalMarshalSha256": "0981abae8e2701aa08037e186cc2710b3a33e497cbccf5006c20907ebc6ff4bb",
+      "sourceSha256": "c4d7879e272bb1ad1c42bddd3017df54c044fb045a96fb10fa70519907b05944",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.action_service.single_port_download",
+      "source": "bkutils/action_service/single_port_download.py",
+      "originalMarshalSha256": "4c5a451ce273f1a998b33ce5b40ec0844f36262cb56d32839ace2ac7cba444ec",
+      "sourceSha256": "ee4c244ad2935816bb97440325e8b21793c7d0b405587ab4bebbda2ff16c0599",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.bk_log",
+      "source": "bkutils/bk_log/__init__.py",
+      "originalMarshalSha256": "452557e5834379920d24b356861d1566e3ed5c6cc35c2643127459d6419898ef",
+      "sourceSha256": "f06a0a1b3c90dca2b0d5e34da024d454184a2be2c1d313b5fe9d69110f11f7ff",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.bk_log.base_bk_log",
+      "source": "bkutils/bk_log/base_bk_log.py",
+      "originalMarshalSha256": "33351972c4f4c8c87aecf6724569d5148a26243c810f4e2a7496ef8b42c8545e",
+      "sourceSha256": "c1c74813a393726e9f180f72528d4c343b78556d7c0927d7d22faea690ece425",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.bk_log.cli_log",
+      "source": "bkutils/bk_log/cli_log.py",
+      "originalMarshalSha256": "91005f734cbb0701d5873ddb4da91daa9785c691fad0fcc6091bdea9c3afddf4",
+      "sourceSha256": "e9d2612077a30febf0c3f0b2bad48eec46bc6ae3345c8bdc0fed8a3003b09b7a",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.bk_log.flutter_ui_log",
+      "source": "bkutils/bk_log/flutter_ui_log.py",
+      "originalMarshalSha256": "5c4d87fd136f1dc7d394a5226f6646a1d70338ec084f2450512aa94bb8622134",
+      "sourceSha256": "ddd587149798d8cfa7fd386ba5e6cbf2a78ce0d8bb7547f19590155b0d53be8d",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.bk_log.log_utils",
+      "source": "bkutils/bk_log/log_utils.py",
+      "originalMarshalSha256": "11139d84eae36f4e49b2f26d482bc14dbcfd151064a08c09de7687adf3576a2d",
+      "sourceSha256": "4d60397e94c1d6dbe06ff514bbbf3c3ad13ec98dbecb7124e0173f529bca939c",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.chip_controller",
+      "source": "bkutils/chip_controller/__init__.py",
+      "originalMarshalSha256": "64c942dc2855979950c5f5c092becdb3b7ad4d03acf3b2ffe4f2759981f571c5",
+      "sourceSha256": "d1040897b25bfb806e625f74ced1f7eaa0fa9c79b9ae3f4fe610bd6804a82f4b",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.chip_controller.advanced_controller",
+      "source": "bkutils/chip_controller/advanced_controller.py",
+      "originalMarshalSha256": "6e0a9a97fb6dd92a77ba110a9189c2982df6e2475cc3273fcdb0322931ff9bb6",
+      "sourceSha256": "01ab17d030fc2541ab987beab5780c0bdaed2c22c247100bb43a227728b5f99b",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.chip_controller.base_controller",
+      "source": "bkutils/chip_controller/base_controller.py",
+      "originalMarshalSha256": "3efee820a74e5c7c73b93d7722cd6ff6136b4d134699f84ea9430c149bf33110",
+      "sourceSha256": "89f757f10fcf5b1bf4224685824b537d851bc2d4c3e48b2034db3441b936be2b",
+      "runtimeFieldsMatch": false,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.chip_controller.chip_set",
+      "source": "bkutils/chip_controller/chip_set/__init__.py",
+      "originalMarshalSha256": "f54f98706d405e269e03f0ee9e3c54060d2722c74075b5c886e5d83138a4d5ac",
+      "sourceSha256": "e76c4e39ffc3b8140f205e5e54c1254bd2b27327376bfea4098e3d48fc1a17ad",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.chip_controller.chip_set.base_chip",
+      "source": "bkutils/chip_controller/chip_set/base_chip.py",
+      "originalMarshalSha256": "510f7cc25a4cf1657d28ae3876690b54e50c089700efb11acded1b6022f15421",
+      "sourceSha256": "48cc7d9f881ec4f021f3770bac6258dfe94c1cac2bf170e43b52f1157fe53c3b",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.chip_controller.chip_set.bk3436",
+      "source": "bkutils/chip_controller/chip_set/bk3436.py",
+      "originalMarshalSha256": "5faa9e4c8fd57ccc9f2c2496a20fa93537701a982ae0c3209477881a973d0855",
+      "sourceSha256": "fec71fc3f0203345414922e7a6d5a6d58ae19a06c113caf340210439c769745a",
+      "runtimeFieldsMatch": false,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.chip_controller.chip_set.bk3437",
+      "source": "bkutils/chip_controller/chip_set/bk3437.py",
+      "originalMarshalSha256": "12ac86a27fe55ee45262b44134b3f82879a7f327acbaba977ba109395cccdac2",
+      "sourceSha256": "d3aa99f2b754a01c688ac4fde476ea300704e174ce262afe76ecd495c95e234c",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.chip_controller.chip_set.bk3515N",
+      "source": "bkutils/chip_controller/chip_set/bk3515N.py",
+      "originalMarshalSha256": "7e07ed98a1ad00f30f61c87ec9578178452ee940589d71205ce11a2ec27346e3",
+      "sourceSha256": "0433a1825f466c458c0a6ffd5358da54916b9e342a0e2c494d155a16522ad180",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.chip_controller.chip_set.bk3633",
+      "source": "bkutils/chip_controller/chip_set/bk3633.py",
+      "originalMarshalSha256": "42a3957e4d50bf35bee89df9eaf1bbad25f8cf7c88bdc8b517c35969bd624e23",
+      "sourceSha256": "085d23d3bb01f93389e2ab1dd73269b54ecc6b2a2393991918a2efc4170d5396",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.chip_controller.chip_set.bk3653",
+      "source": "bkutils/chip_controller/chip_set/bk3653.py",
+      "originalMarshalSha256": "134cca4a155984fce00995d91e2b90193fb5cabded622a8edc41d67c4af2cdf8",
+      "sourceSha256": "8fa69d3085c49fc2234750378ab5fdc99f6cbf2cc0bcf8560501405db3015d67",
+      "runtimeFieldsMatch": false,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.chip_controller.chip_set.bk3653_security",
+      "source": "bkutils/chip_controller/chip_set/bk3653_security.py",
+      "originalMarshalSha256": "fda43f12e01b98e48454c2f075369d9037e4a7efbdff45297724bb83c3ecb899",
+      "sourceSha256": "b26bc58ae2032110eb1d5cc861c417b5263635ea20d58472c237fb02147be3fd",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.chip_controller.chip_set.bk5886",
+      "source": "bkutils/chip_controller/chip_set/bk5886.py",
+      "originalMarshalSha256": "95762016ec0e01ba454d023ef3f306b76e1a40ff226f728670040574ce0711c1",
+      "sourceSha256": "177a59a17e09bfe5b4047330de7c271b6133bcc85df3b5147e5070d2073d63b3",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.chip_controller.chip_set.bk7231N",
+      "source": "bkutils/chip_controller/chip_set/bk7231N.py",
+      "originalMarshalSha256": "ee28c235fdb8dd70326c4552560fcb8728a4f3fbafceeb448fe80e969f3b9732",
+      "sourceSha256": "793757448ee0aa493839bdf0c41dd11ff20453c1c1c1cecd43041528f323e507",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.chip_controller.chip_set.bk7236",
+      "source": "bkutils/chip_controller/chip_set/bk7236.py",
+      "originalMarshalSha256": "dbb50bdb1acfc95ac334a9be14acae70305e300ad986fe1380c038f967ea5875",
+      "sourceSha256": "7d65abf17573446afe006353798d08e134f204f8b494c283596fce24434957c0",
+      "runtimeFieldsMatch": false,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.chip_controller.chip_set.bk7236N",
+      "source": "bkutils/chip_controller/chip_set/bk7236N.py",
+      "originalMarshalSha256": "25162b0262075a69986f59fc62337af55ddbe35df70d12397606eb46e27fedb5",
+      "sourceSha256": "23192a3e3cc02303d765b707ac70f751c85b224fe92cd7b955bb941cd4df7663",
+      "runtimeFieldsMatch": false,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.chip_controller.chip_set.bk7236N_security",
+      "source": "bkutils/chip_controller/chip_set/bk7236N_security.py",
+      "originalMarshalSha256": "1ed26aa3c88d195af25a948b5ed670e5d18c4e3d13d0acaba482de11a2b17ad0",
+      "sourceSha256": "6ed0f0d3aa1f85e892052ea0fbf762e9cac3a1dbceb5d17ea6101214c5b64dee",
+      "runtimeFieldsMatch": false,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.chip_controller.chip_set.bk7236Q",
+      "source": "bkutils/chip_controller/chip_set/bk7236Q.py",
+      "originalMarshalSha256": "96968cd3a33ffa7573d4e7d434de1ca8570ce6f421ee0b161ba488e4d2d9f171",
+      "sourceSha256": "0600ee85fa1260a6d6ad6121d86978ca74eb72868829c44ea97ccf034834d2a4",
+      "runtimeFieldsMatch": false,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.chip_controller.chip_set.bk7236Q_security",
+      "source": "bkutils/chip_controller/chip_set/bk7236Q_security.py",
+      "originalMarshalSha256": "732630e1b5df7a2e9d2b84fc4a672deff37804e947da5a1088b71d901b9d1f66",
+      "sourceSha256": "df3ed23d2544155de0f18183e25c1cc1d8ed61523fffdc0a73afdf3c620b64e7",
+      "runtimeFieldsMatch": false,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.chip_controller.chip_set.bk7236_high_baudrate",
+      "source": "bkutils/chip_controller/chip_set/bk7236_high_baudrate.py",
+      "originalMarshalSha256": "43694ac7a688e5a1acb9bce987842449409acca75c19e2f53bd35b9cd48b51fb",
+      "sourceSha256": "619a1047dee303c04f3b61c3cecfd4edb61d8e6f6082f15573240a5c15dcc2da",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.chip_controller.chip_set.bk7236_security",
+      "source": "bkutils/chip_controller/chip_set/bk7236_security.py",
+      "originalMarshalSha256": "d68126e420d597834979e3fed82150f867fd4ba67070b1180fd12368e63d2231",
+      "sourceSha256": "f63e07be0132c02c31784fb455cbdb5a4d75e62fccd6db0f3ffe10cd6cea8b47",
+      "runtimeFieldsMatch": false,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.chip_controller.chip_set.bk7238",
+      "source": "bkutils/chip_controller/chip_set/bk7238.py",
+      "originalMarshalSha256": "15ed6b96b21477e881fcadf99ca070be7dc5f8a1a616a22b941e19131a87e097",
+      "sourceSha256": "7274e1761314fb946a897133bb132c05a88ca841e769e49d0b8d26b0f17b6f80",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.chip_controller.chip_set.bk7239N",
+      "source": "bkutils/chip_controller/chip_set/bk7239N.py",
+      "originalMarshalSha256": "093937fd65a0c98de108fbcdb9e2a42d5e255b7a8da9bddfce34452e90f4c02d",
+      "sourceSha256": "85e8f7b6dcd9ee107c04368ef9543fe661d00108ba98bb77a666190099ccae5b",
+      "runtimeFieldsMatch": false,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.chip_controller.chip_set.bk7252N",
+      "source": "bkutils/chip_controller/chip_set/bk7252N.py",
+      "originalMarshalSha256": "99447438bb3cd9df6a90f9c4b48b7f0c4cfb1e829742f4837a6fe26f474e3e03",
+      "sourceSha256": "4467d3bc02b001c2f867a6ff5f8b391b16cbf99ee59c66bc97fa659196b7302f",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.chip_controller.chip_set.bk7256",
+      "source": "bkutils/chip_controller/chip_set/bk7256.py",
+      "originalMarshalSha256": "6c926485b0ace340889d1f7710b80a0e63de23df532a4b99fcb372c75149c215",
+      "sourceSha256": "cd9db2a1822bd39fd6e33b8c776b2e6220b6f2556dae905159009e40e0f1602e",
+      "runtimeFieldsMatch": false,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.chip_controller.chip_set.bk7259",
+      "source": "bkutils/chip_controller/chip_set/bk7259.py",
+      "originalMarshalSha256": "08dfc7408202436def129cc55fdbf9dcd9649d59686f7ba040fcc19a6b2dbfb7",
+      "sourceSha256": "23d3edfcbd24438d88b3edf23ac5a0bf240436e737ca8dbd0671486b66468855",
+      "runtimeFieldsMatch": false,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.chip_controller.chip_set.bk7259_security",
+      "source": "bkutils/chip_controller/chip_set/bk7259_security.py",
+      "originalMarshalSha256": "ff85bc00b7494580aae711c0cf6a682f5ee39adf9bfd082eb66c131ce0e41999",
+      "sourceSha256": "97230d18ec0539a3906a79eaae0f76dd071a3d2cdc1943d2ce27ca5e639b383b",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.chip_controller.chip_set.bk7311",
+      "source": "bkutils/chip_controller/chip_set/bk7311.py",
+      "originalMarshalSha256": "b5ae2aa7ad0229f28e168686d84b1391862b98ff229945baba6d8d60393eb5e7",
+      "sourceSha256": "c76c39a7216d5ecaea2b3f9a46d00cdd815ab38579914daf8b56944140e0a832",
+      "runtimeFieldsMatch": false,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.chip_controller.flash_controller",
+      "source": "bkutils/chip_controller/flash_controller.py",
+      "originalMarshalSha256": "f05561fd40aede90c2f367e9b2a24413c0f7256e207b2b00ffd83584297d0c3d",
+      "sourceSha256": "a55654ba4bb2c787daeb766917a4e659406f1eab1450947981e70a8fe42ecdcf",
+      "runtimeFieldsMatch": false,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.chip_controller.flash_controller_tsingteng",
+      "source": "bkutils/chip_controller/flash_controller_tsingteng.py",
+      "originalMarshalSha256": "44e0408e272f5d9c48481c3ff6a1c92af53ebe0e32a101c98de1982a6f618e8f",
+      "sourceSha256": "5d8fb440c7cf277da3d147cf9989324d21be18c7b3ab06e3c136b7c2c26a09f0",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.chip_controller.flash_tsingteng_test_data",
+      "source": "bkutils/chip_controller/flash_tsingteng_test_data.py",
+      "originalMarshalSha256": "202054946ab21a1b4a6f02b815e5fe33d0bf3a3bc3543eabca85013bce010542",
+      "sourceSha256": "3e9b54df178d4b0390fb14f49813fd8c2255000d8a9c91c6b4deb781f70a4e99",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.chip_controller.reg_controller",
+      "source": "bkutils/chip_controller/reg_controller.py",
+      "originalMarshalSha256": "70a750ef5a1750d75187d2f4376f1cfad4c19d0e314878814a5ec4ad2931abfe",
+      "sourceSha256": "030d6185753c90dc4a779e32714bcc3738a58487b6d7918d96b949d2e443854c",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.chip_controller.serial_helper",
+      "source": "bkutils/chip_controller/serial_helper.py",
+      "originalMarshalSha256": "11d4a2a07b146c78673f80abe6b338c30df6efe65c0e8997412a80128143c663",
+      "sourceSha256": "723cfc7ee831b3b9602b5358a879bb0f1ffb308a2fbcac796fa28f8fb4cc2819",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.common",
+      "source": "bkutils/common/__init__.py",
+      "originalMarshalSha256": "7c03b5a8ba8b07bcdfedd8d9a24e5660996c126fcc8274a5a81c6075dc6155b8",
+      "sourceSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.common.bk_global",
+      "source": "bkutils/common/bk_global.py",
+      "originalMarshalSha256": "85322f1e994a5bb6e9c2e84a6dd4bfdd268fc7be2968b7b798814f403cbe0621",
+      "sourceSha256": "9a5010420ae7e300d38a5256799cb8e2f87d78ff9bc8a36966dd5266a9d0031f",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.common.bk_out_config",
+      "source": "bkutils/common/bk_out_config.py",
+      "originalMarshalSha256": "7008f7f08543f0a6b37fef10aaf2a11c19d649d5c1204674ec27ee36ddc06074",
+      "sourceSha256": "d44a3fe03c66970a318ed33f5fbd851434a3b2490e580968762a45cc73b6de5c",
+      "runtimeFieldsMatch": false,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.common.common",
+      "source": "bkutils/common/common.py",
+      "originalMarshalSha256": "7305d2f847e4f0c1b41d72569acf8d89dc82bafd54c089867084de97d76829aa",
+      "sourceSha256": "8540f5cfab626de483a034cd248f5593050c9151f8cdb3061344813a4c4f798d",
+      "runtimeFieldsMatch": false,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.common.encrypt_helper",
+      "source": "bkutils/common/encrypt_helper.py",
+      "originalMarshalSha256": "4cb513e1336e503d525aa08096e862f10b16169ed341faf57a732be6f35039fe",
+      "sourceSha256": "64bd61ce782c1a0e346467c7f427fc7e0115a527e21c89286017bb41d09b79c2",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.common.random_bin_verify",
+      "source": "bkutils/common/random_bin_verify.py",
+      "originalMarshalSha256": "87142b29ceadb524434a9bcfb77e2d6388193aee883f9bbd94b9fd9e9f279b57",
+      "sourceSha256": "7346e92e5c2bf6c456e9de9b34bf8120a0145d22143aa69c347aa390a38ce99e",
+      "runtimeFieldsMatch": false,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.common.ui_bridge",
+      "source": "bkutils/common/ui_bridge.py",
+      "originalMarshalSha256": "765de59aaeeaafbc8b350dbe9621fe4d5a2c4ad10c5d7f6d84969f70c8a2f93f",
+      "sourceSha256": "1d81686761ff47d03d1c1ba0946edf93522acdff9d0616227ad0e6ec59748090",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.common.ui_bridge_data",
+      "source": "bkutils/common/ui_bridge_data.py",
+      "originalMarshalSha256": "3fef2a1e8a8e201bae2916fe779d1e49f772174746c13f99e8aca787cf90462b",
+      "sourceSha256": "bef55f80b60921d126245dd45dd4c413992fe3d4abde3e1e4b018eb65a7f1bbc",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.common.version",
+      "source": "bkutils/common/version.py",
+      "originalMarshalSha256": "7d0101d81c4a7e006150ff9458aeb6da043c204b6028c2ea38c2432c31a9dd35",
+      "sourceSha256": "b9a1f8b73c38793ec303728ff30baa432db30f0a30ecd9d04f7b6098e8b2fa83",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.flash_adapter",
+      "source": "bkutils/flash_adapter/__init__.py",
+      "originalMarshalSha256": "e97fb974fa57067edb0be9a678f301f26d5c7a02657bcfb3c1b6d6f70e112b93",
+      "sourceSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.flash_adapter.flash_config",
+      "source": "bkutils/flash_adapter/flash_config.py",
+      "originalMarshalSha256": "2a7618fbeb14d83e87a0a44feef8d73621a002840f2fe31b7eb83d348d72017a",
+      "sourceSha256": "a0919c073b1068382294a6d8abc666bce4d860e52bb12d022bc6f86cf7e39d47",
+      "runtimeFieldsMatch": false,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.private.product_id_verifier",
+      "source": "bkutils/private/product_id_verifier.py",
+      "originalMarshalSha256": "3b54432a02806fb3ae8930a431333f240a8a02668a767514301f1e5869b94438",
+      "sourceSha256": "c12cdc376a5b20723bff27269f32246d751eb6abf460600a1c8b612a08cfb687",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.app",
+      "source": "bkutils/protocol/app/__init__.py",
+      "originalMarshalSha256": "4edb682e927d54fc9de7e29defde9a325355fd06d4bf811a07e14b6a32902cb9",
+      "sourceSha256": "8ef2e73e4477e6bf0abe73787f43ef86762e79eb5be44f8b4309e8996f035d13",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.app.app_bootloader_ota_success_protocol",
+      "source": "bkutils/protocol/app/app_bootloader_ota_success_protocol.py",
+      "originalMarshalSha256": "f0ccdf22605338f5e89392c80d67fa563e5fa5e2fbd5981d420145c68a3cc061",
+      "sourceSha256": "a04c39b57e3d5be304ec45b1057897e7ee7d51bc11ea620259ac7650138c2350",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.app.app_bootloader_partition_flag_protocol",
+      "source": "bkutils/protocol/app/app_bootloader_partition_flag_protocol.py",
+      "originalMarshalSha256": "6cf9eee90d83a7924c4b32d4ff3e3d2ce4fddf151a15e83a7cccce83de9181d3",
+      "sourceSha256": "763d1006165d9d270708c2d82c97dd65d0509f031b0caa74103962152235b560",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.app.app_enter_outter_flash_mode_protocol",
+      "source": "bkutils/protocol/app/app_enter_outter_flash_mode_protocol.py",
+      "originalMarshalSha256": "ce9f649888ad37c4e2770c2d5a19ada75d8d9a1203ef33995aead0c7748bfac8",
+      "sourceSha256": "66d4cdcf8667dec98a9a782eb00702009f851cbacc2c0db532a0e074ec5b6d36",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.app.app_enter_outter_flash_mode_success_protocol",
+      "source": "bkutils/protocol/app/app_enter_outter_flash_mode_success_protocol.py",
+      "originalMarshalSha256": "9b05d071d162e2c69e67a0b6d49ef1f7c2e048841f0220e9dbb8b02a187df20c",
+      "sourceSha256": "c6d37a81bd5b94d83ded4c0c25b8a68d526bf42b5ef409378fbfbca1a22f9fb8",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.app.app_reboot_protocol",
+      "source": "bkutils/protocol/app/app_reboot_protocol.py",
+      "originalMarshalSha256": "42785d8b1c38dd7e8a343eee490bb0ae1977d21e6b24eaf849dfa6f7f5dd68a9",
+      "sourceSha256": "63fb2148eaf1d1b103b25cbae1638b2dd4a8f7f0fcd5d4a541044745288dc32c",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.app.base_app_protocol",
+      "source": "bkutils/protocol/app/base_app_protocol.py",
+      "originalMarshalSha256": "ab18da2145b7e845fe00ea9cfa3c46721b8db50c6f9e00ea4e627878c8674c42",
+      "sourceSha256": "d5b1361251b63692072cc369d9d10bd3dfbf9b569ad4d9fae3236755363add76",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.app.inject_key_finish_handshake_protocol",
+      "source": "bkutils/protocol/app/inject_key_finish_handshake_protocol.py",
+      "originalMarshalSha256": "929891e5bd45e19384f5aaf0869eba93e8f3ed557e0afa405a96dae013da261e",
+      "sourceSha256": "2bf81d33de2ed1047805847421a1167defc7ce01c963a888b6181857d02e5927",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.app.inject_key_handshake_protocol",
+      "source": "bkutils/protocol/app/inject_key_handshake_protocol.py",
+      "originalMarshalSha256": "8cf933daa124a0bec6d96cf55b33eb43284f914a9ee46576b29357645ff8939f",
+      "sourceSha256": "ea672fa1b632e2442cf59910333ec1f284680b22623f3b0f88382f9fe30abc9b",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.app.inject_key_set_secure_boot_protocol",
+      "source": "bkutils/protocol/app/inject_key_set_secure_boot_protocol.py",
+      "originalMarshalSha256": "60544b65db521b862ba91e6bef36cb4ff15f52223e436d38ce7c067d43c42d50",
+      "sourceSha256": "08ef15bc78764a50517a03cc25d4471ba2a2afe466757b92a906612b8b08a269",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.app.inject_key_start_protocol",
+      "source": "bkutils/protocol/app/inject_key_start_protocol.py",
+      "originalMarshalSha256": "f47ee769504bca2c1813e4bc312484d170f25c69a8264086a9c6ebc90ee607db",
+      "sourceSha256": "46e4b3b5429e47caf3abd639d8d1a7466f8b18c5b74ac3b7e6d0484cf4a1a4a4",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.app.inject_key_write_aes_key_protocol",
+      "source": "bkutils/protocol/app/inject_key_write_aes_key_protocol.py",
+      "originalMarshalSha256": "495440469e329798c6ca24747d7fb1c2ffac011d18bfe7df1b727fb9a51848ef",
+      "sourceSha256": "2949ad2726e02fd8e00dd03c43c847009491cdd6613e21f471b7afcff99659fa",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.app.inject_key_write_random_key_protocol",
+      "source": "bkutils/protocol/app/inject_key_write_random_key_protocol.py",
+      "originalMarshalSha256": "3146c158e61e4a4d67d6f704f55f00bbf9ec1f6d14240d87cfe125c802522e56",
+      "sourceSha256": "eeae4c70caec2286be32ce6591ed19f109747c1fd5c844061894ae6d323012dc",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.app.verify_random_bin_protocol",
+      "source": "bkutils/protocol/app/verify_random_bin_protocol.py",
+      "originalMarshalSha256": "a6f08852ac4023aef7d25162b570f5062497b678de624357ca4ee76f76ac7129",
+      "sourceSha256": "fb7fb006ae63a216935f298f4d25bc051250e6fccf1e6eec2a0edae69b7568da",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.bootrom",
+      "source": "bkutils/protocol/bootrom/__init__.py",
+      "originalMarshalSha256": "5284b9961fb4d239a1d7791f584d6e8d71374213a5736e3f501e55fe0a4d9522",
+      "sourceSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.bootrom.v2_0",
+      "source": "bkutils/protocol/bootrom/v2_0/__init__.py",
+      "originalMarshalSha256": "c1254fa85485eef089084af778940648528cfa6b2150cc0f316deb05bffdc1bf",
+      "sourceSha256": "88fa7c492be425a46dacd6de4e3004aa015c755479ad6b35e276d410a37b355c",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.bootrom.v2_0.base_boot_rom_flash_protocol",
+      "source": "bkutils/protocol/bootrom/v2_0/base_boot_rom_flash_protocol.py",
+      "originalMarshalSha256": "ae6a0835a4c60c840909fbf198ecba41808fbad8d32f59d3a68fa5c3901b690e",
+      "sourceSha256": "76dd2292c7e7c39486160bfdf5f9a13e95a5dd11cc0b258f5afe57920d0b177f",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.bootrom.v2_0.base_boot_rom_protocol",
+      "source": "bkutils/protocol/bootrom/v2_0/base_boot_rom_protocol.py",
+      "originalMarshalSha256": "cf15ebc2a3a368dccaba5fced1666d28619edf8d52fe5fffd6d4f919336e2745",
+      "sourceSha256": "0a5d638f8b4dc7fc817a90fbb0ff45cddababc228c2d161e49c47a5b8f9c7cbc",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.bootrom.v2_0.bl2_link_check_protocol",
+      "source": "bkutils/protocol/bootrom/v2_0/bl2_link_check_protocol.py",
+      "originalMarshalSha256": "f6370751e142a29332cd116960a366b2c93f0221f2b955ee2e1fa0c3a7dd6b7e",
+      "sourceSha256": "cd864cf0260a4efc86476afff0818ece345241ea1f5dd7c6cda40e49e281a309",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.bootrom.v2_0.check_crc_ext_protocol",
+      "source": "bkutils/protocol/bootrom/v2_0/check_crc_ext_protocol.py",
+      "originalMarshalSha256": "ec8332220b8cb2df120afc6920e687c41de8fc8cae8ae20f4a60793b5a26a0a3",
+      "sourceSha256": "15437ed0bc5d83cb668cf2c4d0cc946d4196c3fccaa374cdbf10a40c0d20df8e",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.bootrom.v2_0.chip_enter_cbus_mode_dbg_protocol",
+      "source": "bkutils/protocol/bootrom/v2_0/chip_enter_cbus_mode_dbg_protocol.py",
+      "originalMarshalSha256": "a96661ff39e6e58f3da136015e7c0e03a3198a6a1ed1fa944bcaeb132ef88013",
+      "sourceSha256": "292941b24321a4fa40285f313c5fe401488da6533351e46d89845b9d3b9f6db5",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.bootrom.v2_0.chip_enter_cbus_mode_ext_protocol",
+      "source": "bkutils/protocol/bootrom/v2_0/chip_enter_cbus_mode_ext_protocol.py",
+      "originalMarshalSha256": "ef17c48196f6357a10434eab632fe21656974c3560eba223797d9ea6d597ed4d",
+      "sourceSha256": "b5b4dd5cb7c2c2cd8fbea8e66f853c4e2ae88904b19ed42c731b693b067511e7",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.bootrom.v2_0.chip_enter_cbus_mode_protocol",
+      "source": "bkutils/protocol/bootrom/v2_0/chip_enter_cbus_mode_protocol.py",
+      "originalMarshalSha256": "0e22a77ceb1c7d49cd4236ff97f6d715f934327ab6d028d117a1bd8fd5861415",
+      "sourceSha256": "0ff2999c02a3e31b3dad412399d397ab9e57087d3a95c145da8358e8e6407381",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.bootrom.v2_0.chip_enter_secure_debug_protocol",
+      "source": "bkutils/protocol/bootrom/v2_0/chip_enter_secure_debug_protocol.py",
+      "originalMarshalSha256": "a1d91a809df17385ffe2cdf2e646cedc65fc7b5220f56e80825c391a51544fb5",
+      "sourceSha256": "bbbd46a70bd70f722dd0e2a50b9e25bb78c3e68afc7a6380421a2f598402aedd",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.bootrom.v2_0.chip_exit_cbus_mode_protocol",
+      "source": "bkutils/protocol/bootrom/v2_0/chip_exit_cbus_mode_protocol.py",
+      "originalMarshalSha256": "2f84b7ec599ebdd67f042a0026795066f4731bb019f82715808b87c8d8c934ed",
+      "sourceSha256": "2c29ebf30ff2614b3ed1589a2a62b3d5c0999f3af4b4eda4dd92be4966dbc758",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.bootrom.v2_0.chip_high_freq_enable_protocol",
+      "source": "bkutils/protocol/bootrom/v2_0/chip_high_freq_enable_protocol.py",
+      "originalMarshalSha256": "cea386ce54137c6c6d489c2aa079795dbb22e0d11015aef8efa8745ae1f943c2",
+      "sourceSha256": "67dff41e416a9ce470d79de419ec846655b7e5c07119514c7e027a63f3277c22",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.bootrom.v2_0.chip_high_freq_set_protocol",
+      "source": "bkutils/protocol/bootrom/v2_0/chip_high_freq_set_protocol.py",
+      "originalMarshalSha256": "3392eead9a41dada2bfb0554bab64075a4eab3b09d2a8fdefdbe0000f966f9c8",
+      "sourceSha256": "8aeaf3d6bb2ccdda941f6f299cf933f86f3eadff1450db1ae21f80fcb0c8aaa4",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.bootrom.v2_0.chip_request_secure_debug_protocol",
+      "source": "bkutils/protocol/bootrom/v2_0/chip_request_secure_debug_protocol.py",
+      "originalMarshalSha256": "ade30d7e43553d353517074bfdaf76a3344652a243062254e17fe295da2a2b1d",
+      "sourceSha256": "b425720a2e5db610b860688ce98349cb4a38d3cde75f94c6ba04eea37a6a4e19",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.bootrom.v2_0.chip_start_bl2_upgrade_protocol",
+      "source": "bkutils/protocol/bootrom/v2_0/chip_start_bl2_upgrade_protocol.py",
+      "originalMarshalSha256": "9acd036e886992e7ee578768b5e5420c9e8e9fa6568a807296387cf46f6b8a0c",
+      "sourceSha256": "593d1244127867f9c3a5ceeb6cf4473477022f332af23e83139b50fa0abc7b8d",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.bootrom.v2_0.chip_stop_bl2_upgrade_protocol",
+      "source": "bkutils/protocol/bootrom/v2_0/chip_stop_bl2_upgrade_protocol.py",
+      "originalMarshalSha256": "642c83e4b1c417d1f1a33e7541ad813c5a0f728d2afbc03551e8d05c9398be79",
+      "sourceSha256": "0ea0adce6c7f423d4a6cf470ca4638a13aa80504e035bb6acd4a9bd7a54064e6",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.bootrom.v2_0.flash_custom_read_ext_protocol",
+      "source": "bkutils/protocol/bootrom/v2_0/flash_custom_read_ext_protocol.py",
+      "originalMarshalSha256": "8e3eba36ab3fc92e22206f85fa60f45fff15b636f99033afc5a6049c28ee192a",
+      "sourceSha256": "d26afe3d2f727bbd081786958b5b83564bd5b6669358a5b35454e74c8b970700",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.bootrom.v2_0.flash_custom_write_ext_protocol",
+      "source": "bkutils/protocol/bootrom/v2_0/flash_custom_write_ext_protocol.py",
+      "originalMarshalSha256": "aa3d2c8209cbf4c31aae5d6bd1ba4721c32fc62a84b4c6a45acd6df90dc7d0ac",
+      "sourceSha256": "724ef963846c383ee3e18fedd5c9ace34bd9142d19cb5d45c1c22f872105c0a5",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.bootrom.v2_0.flash_erase_4k_ext_protocol",
+      "source": "bkutils/protocol/bootrom/v2_0/flash_erase_4k_ext_protocol.py",
+      "originalMarshalSha256": "7133eaa8dc754cfd9e7b5642a5be0125bdb6c46cbe35753f8e092653f343078a",
+      "sourceSha256": "8918215230b6408a2e6161206db6a1cece08737972bf0fb70bdbb21da1e181a7",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.bootrom.v2_0.flash_erase_all_ext_protocol",
+      "source": "bkutils/protocol/bootrom/v2_0/flash_erase_all_ext_protocol.py",
+      "originalMarshalSha256": "3a0aeb12a9477e66fe04c5b3a17db658bcc2a38161357c7543a774c35d0b6aca",
+      "sourceSha256": "1c1c5e5766e60d6946f3fb5a24400d0bc305d86e05e104962c3a95f9fd3d955c",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.bootrom.v2_0.flash_read_4k_ext_protocol",
+      "source": "bkutils/protocol/bootrom/v2_0/flash_read_4k_ext_protocol.py",
+      "originalMarshalSha256": "044a7d68446a329cfe89f348ae2e795e242491d7241f03bf1a9c36bf7080bbf8",
+      "sourceSha256": "7ead3e9fe4e4836443526919d13ef9e8c9e807e9a27736d5f7e640e1e117e3aa",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.bootrom.v2_0.flash_write_4k_ext_protocol",
+      "source": "bkutils/protocol/bootrom/v2_0/flash_write_4k_ext_protocol.py",
+      "originalMarshalSha256": "aab1d80377f2133f328f581405d555f5a9bfba264f18ffdf05f93e9cd810775a",
+      "sourceSha256": "d790a85c32c4081eaeb07323858e57b4e5ae0e89484d5ee0b6749d94f94b18c3",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.bootrom.v2_0.link_check_ext_protocol",
+      "source": "bkutils/protocol/bootrom/v2_0/link_check_ext_protocol.py",
+      "originalMarshalSha256": "49dc0c60a59aebb47b46120438c493784ac49aede92136f9f0d992c5256f5dc5",
+      "sourceSha256": "8a05a5fd42e6035ac6f489573729493b480c4565c00aad04b783b7f3ce072459",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.bootrom.v2_0.v1_4",
+      "source": "bkutils/protocol/bootrom/v2_0/v1_4/__init__.py",
+      "originalMarshalSha256": "a8927dd81ba9481b646c0f8c6122efc22bafca17733ff8801d2af1d8579a19d5",
+      "sourceSha256": "30b1bc9fdc0cae6b57daeda0c2fcbe3830b00c21ee936195c64eb8cdd04266f2",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.bootrom.v2_0.v1_4.base_boot_rom_flash_protocol",
+      "source": "bkutils/protocol/bootrom/v2_0/v1_4/base_boot_rom_flash_protocol.py",
+      "originalMarshalSha256": "d36a8ab723ec41f4b686c748f1ffc35c0be0618ed42f3686c96359a12b199807",
+      "sourceSha256": "2c88bcd568284d36b2d99d7675f5e65278ddc69fe443afe5698288fb20af2225",
+      "runtimeFieldsMatch": false,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.bootrom.v2_0.v1_4.base_boot_rom_protocol",
+      "source": "bkutils/protocol/bootrom/v2_0/v1_4/base_boot_rom_protocol.py",
+      "originalMarshalSha256": "9a75b0df7dc067b1864e3d84ec2d35ac3fc32b9009e2d7e005e4066229c5a4f2",
+      "sourceSha256": "c7bbe79df198efb79d6450d79c8464ed6d95249ec4018c8dbd8bf023f089708c",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.bootrom.v2_0.v1_4.check_crc_protocol",
+      "source": "bkutils/protocol/bootrom/v2_0/v1_4/check_crc_protocol.py",
+      "originalMarshalSha256": "628a227b89a4f6494fecfd62aaafea3a1513083eea4250bf367ccd8c2c05a294",
+      "sourceSha256": "cf6a153ac6ecce9c3fe18ffeefc7b57a08e669ff4e0736477178a8354d44aafe",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.bootrom.v2_0.v1_4.flash_custom_erase_protocol",
+      "source": "bkutils/protocol/bootrom/v2_0/v1_4/flash_custom_erase_protocol.py",
+      "originalMarshalSha256": "fdd2f324060e35de6d78b7f7941720af9e5987cc513ad0553652bc5702f7ad39",
+      "sourceSha256": "d75e3dbecc512b45dc0895ed2fe7fd99258af35840226df42d023a1710552d9e",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.bootrom.v2_0.v1_4.flash_custom_read_protocol",
+      "source": "bkutils/protocol/bootrom/v2_0/v1_4/flash_custom_read_protocol.py",
+      "originalMarshalSha256": "adce3c81caff3aa7a7c2134dc9051c19a1d20cd08ae8c469d1409ccd8b145e43",
+      "sourceSha256": "fa6716fbfcad3f2ce2f7c40d61cf62a8d73a4c6bb20acb98325a432d643a586d",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.bootrom.v2_0.v1_4.flash_custom_write_protocol",
+      "source": "bkutils/protocol/bootrom/v2_0/v1_4/flash_custom_write_protocol.py",
+      "originalMarshalSha256": "d6d1c87121efee97840711743df04aaa5fece99accc0bdc4b1c5c4cdfa19bf32",
+      "sourceSha256": "301f94ba047b2a922dc60aa08d690d55fabaad96ff8f43cfce613956c167745f",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.bootrom.v2_0.v1_4.flash_erase_4k_protocol",
+      "source": "bkutils/protocol/bootrom/v2_0/v1_4/flash_erase_4k_protocol.py",
+      "originalMarshalSha256": "e49cfff4d7a7fbcbf6cc67b0c5717c25dc8eb4ad53cffa295c5e38788aeb5373",
+      "sourceSha256": "effa3fce6e521b56cb0ad4d7191921f44383e9a341580241f8050a5bf9b94143",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.bootrom.v2_0.v1_4.flash_erase_all_protocol",
+      "source": "bkutils/protocol/bootrom/v2_0/v1_4/flash_erase_all_protocol.py",
+      "originalMarshalSha256": "f8f2fad13a544327e3353499964f2063f42ecf2d4ca8d10ea514abe39547fc53",
+      "sourceSha256": "3c0c628d41ac5bf3f35cfdc3a62459ff403f50207d99f3ee033dac285eccb615",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.bootrom.v2_0.v1_4.flash_read_4k_protocol",
+      "source": "bkutils/protocol/bootrom/v2_0/v1_4/flash_read_4k_protocol.py",
+      "originalMarshalSha256": "5e63bbee2839ec7451a2f424b68fed020cedbac220444029bc1001be4a457ca9",
+      "sourceSha256": "c36ff91dd2bed4fb47883bf4c2cccf2f038bf6419f1049e6345123c56b968270",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.bootrom.v2_0.v1_4.flash_read_serial_discoverable_protocol",
+      "source": "bkutils/protocol/bootrom/v2_0/v1_4/flash_read_serial_discoverable_protocol.py",
+      "originalMarshalSha256": "bfe80c92cc9a25554c6d25f0e53b9c3b691f20cd9167a6f986a2f9517d19c5c6",
+      "sourceSha256": "4b75c5c020e0c794000f0c286b3a150394eebc56d2fd58c65ebcb7681a2de003",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.bootrom.v2_0.v1_4.flash_read_sr_protocol",
+      "source": "bkutils/protocol/bootrom/v2_0/v1_4/flash_read_sr_protocol.py",
+      "originalMarshalSha256": "60f1ac15844fd04a83c962a627c8ea4119b65397724991869734932f59b7bbb8",
+      "sourceSha256": "b3d9a8f88f96170421facc4b5389922a74fff142144ac2ea5c1bdb12942e8fef",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.bootrom.v2_0.v1_4.flash_read_unique_id_protocol",
+      "source": "bkutils/protocol/bootrom/v2_0/v1_4/flash_read_unique_id_protocol.py",
+      "originalMarshalSha256": "a357eecf92371a7de369ee19a1f26870bb32998bf75c3de6c93db2f609c88111",
+      "sourceSha256": "8159992d21ed82e75f97331779a6536c80ca8cebc29a7e297199493dc67871ee",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.bootrom.v2_0.v1_4.flash_security_erase_protocol",
+      "source": "bkutils/protocol/bootrom/v2_0/v1_4/flash_security_erase_protocol.py",
+      "originalMarshalSha256": "a0c624a67f2399a438a7e7d5abf862140f9d125fd415ced530db2206bff21159",
+      "sourceSha256": "d74f6a77f758823cebca390a848169e37be84a309ad11a6987481b3c36cb4cb3",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.bootrom.v2_0.v1_4.flash_security_read_protocol",
+      "source": "bkutils/protocol/bootrom/v2_0/v1_4/flash_security_read_protocol.py",
+      "originalMarshalSha256": "2a6fde464974bd59b998d5f751e147c368cc39d64a8dad77e57530154bb4ce25",
+      "sourceSha256": "071ea458349e7b92627ebf7a017fb164ab92cb82f6c4a5b88d7e8a50be3e5514",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.bootrom.v2_0.v1_4.flash_security_write_protocol",
+      "source": "bkutils/protocol/bootrom/v2_0/v1_4/flash_security_write_protocol.py",
+      "originalMarshalSha256": "be645589232365f13db8a6c32f27869604249ac866e81396cc79d805261065fd",
+      "sourceSha256": "6ea98d432b592cd2831c70e603af06e7eca58069edf72cc2dd44005a47bacd5a",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.bootrom.v2_0.v1_4.flash_write_4k_protocol",
+      "source": "bkutils/protocol/bootrom/v2_0/v1_4/flash_write_4k_protocol.py",
+      "originalMarshalSha256": "94eb6e0d4f3e522e197357afc9f66a91ee758072c385a121c780061937b78e61",
+      "sourceSha256": "9a223f8e82fc8b7a0c35406d2027d44ccbd8baeefebcc5d690ba6477e7acd161",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.bootrom.v2_0.v1_4.flash_write_enable_protocol",
+      "source": "bkutils/protocol/bootrom/v2_0/v1_4/flash_write_enable_protocol.py",
+      "originalMarshalSha256": "fc8338ed1f68c619ab3d50c2dc8c8f6362e5439f4819810fbf510cbf0a2ac627",
+      "sourceSha256": "4cb420ea039958375ab62feaae20d79d56b68d34fe9472c233c160b0345f451f",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.bootrom.v2_0.v1_4.flash_write_sr_protocol",
+      "source": "bkutils/protocol/bootrom/v2_0/v1_4/flash_write_sr_protocol.py",
+      "originalMarshalSha256": "547e8aea0865743deb3e93b3b4706b25d7a461f95bca2125bf5e818425b37ab3",
+      "sourceSha256": "07030cc563407713b5c102cbfabe530281f4a05d11e671a70aed1c1a1c6f7557",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.bootrom.v2_0.v1_4.get_chip_id_protocol",
+      "source": "bkutils/protocol/bootrom/v2_0/v1_4/get_chip_id_protocol.py",
+      "originalMarshalSha256": "b6c7c84ac07cc7d6d2e88336779b7d6e3f436dffbc2c38b780949f8ac7f5bbd8",
+      "sourceSha256": "9d75425d5e5a9de7b04dc14e89f0ed3ed1e0c4d0b58291cab79b2a146e7ac331",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.bootrom.v2_0.v1_4.get_flash_mid_protocol",
+      "source": "bkutils/protocol/bootrom/v2_0/v1_4/get_flash_mid_protocol.py",
+      "originalMarshalSha256": "290195c365ac7052dc7963c39c60d1e31b67649b8e26a526005ffd5c603a3d46",
+      "sourceSha256": "6e387e0f38f2c1ff58cd10a5312ae4b756e0f3bb7dd3f2796e8a09619f6edde9",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.bootrom.v2_0.v1_4.link_check_protocol",
+      "source": "bkutils/protocol/bootrom/v2_0/v1_4/link_check_protocol.py",
+      "originalMarshalSha256": "f9dcc848a989555e9e75f73f8b6075aeec3193af790cf284b8357948bf2c4112",
+      "sourceSha256": "2d9c2df7ff30af7a54493ae746ff0c4a2c2d8def0fd4256e69c24e8d07d7002f",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.bootrom.v2_0.v1_4.read_reg_protocol",
+      "source": "bkutils/protocol/bootrom/v2_0/v1_4/read_reg_protocol.py",
+      "originalMarshalSha256": "6a6d7ca007d2ec13cd9e346b8bdcf6c918941f45e3d5d75fe60cd5ff61d9b9c0",
+      "sourceSha256": "30daaa8a9313503b6ae5eef45468a265b352c1ee8811e5829cc460a25b696d78",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.bootrom.v2_0.v1_4.reboot_protocol",
+      "source": "bkutils/protocol/bootrom/v2_0/v1_4/reboot_protocol.py",
+      "originalMarshalSha256": "e3ccaf1eedb20ec9dec72f092e50c8a49ffef11525e3735b46e50a55cd100a27",
+      "sourceSha256": "51ca81aef7291967b2c27edd34352442e05eb6ad93152ce3e59b45a6c8d1140e",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.bootrom.v2_0.v1_4.set_baudrate_protocol",
+      "source": "bkutils/protocol/bootrom/v2_0/v1_4/set_baudrate_protocol.py",
+      "originalMarshalSha256": "a5720ee7ca2a80f3a7534120729b3b30a4b4d082934ab8ad9b8f064d5b9ad702",
+      "sourceSha256": "310d9f7171325b84e41cecf860d0712bf80371175ad42829d110aaf9e4e245c6",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.bootrom.v2_0.v1_4.stay_rom_protocol",
+      "source": "bkutils/protocol/bootrom/v2_0/v1_4/stay_rom_protocol.py",
+      "originalMarshalSha256": "2bc51f23d5091e0b64e8fcd336453252345247ba5923a92337444d1ed5c4413b",
+      "sourceSha256": "2fd29e34bb557e75dab91d39f8926dd1e80f9b3d697dc71b846b8cfe1afd8e47",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.bootrom.v2_0.v1_4.tsingteng_flash_factory_cmd_protocol",
+      "source": "bkutils/protocol/bootrom/v2_0/v1_4/tsingteng_flash_factory_cmd_protocol.py",
+      "originalMarshalSha256": "8e7855078b34a2077adfec8be043e8a4684ae99fc05170a946b6477b5c3dee28",
+      "sourceSha256": "e14cc35840308acc669f5bb38bd7a60883f1bdda25a180fa4eed111815eccf68",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.bootrom.v2_0.v1_4.tsingteng_flash_nvm_erase_protocol",
+      "source": "bkutils/protocol/bootrom/v2_0/v1_4/tsingteng_flash_nvm_erase_protocol.py",
+      "originalMarshalSha256": "5bb91bf63bf41e86b8b7b26cc5a6b98d09a774182ad4e88a034922cda05076bd",
+      "sourceSha256": "e980684c34d446f7b601d829ed4774837004bcaad9d4d1a4312934bf4c8b1c13",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.bootrom.v2_0.v1_4.tsingteng_flash_nvm_read_protocol",
+      "source": "bkutils/protocol/bootrom/v2_0/v1_4/tsingteng_flash_nvm_read_protocol.py",
+      "originalMarshalSha256": "1216db8b23cea826ae531f83f23591ebb6adfcc192ee0c55b89630f5cd8106d9",
+      "sourceSha256": "48db802b56162ef7163d9848e944afa0324f85b41f4d26fd3d85b4fd875b6c8e",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.bootrom.v2_0.v1_4.tsingteng_flash_nvm_write_protocol",
+      "source": "bkutils/protocol/bootrom/v2_0/v1_4/tsingteng_flash_nvm_write_protocol.py",
+      "originalMarshalSha256": "93ccbfe5901d09dacc62179796618572bf4ecb7ed6c2f47a6812cd853327948e",
+      "sourceSha256": "4202e84d934a3ec0f8ef361f5a2639c6929a1d73b124ed8497c4dcb95fdd5cf8",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.bootrom.v2_0.v1_4.tsingteng_flash_reg_write_protocol",
+      "source": "bkutils/protocol/bootrom/v2_0/v1_4/tsingteng_flash_reg_write_protocol.py",
+      "originalMarshalSha256": "b25101ac1e1c2ceee5898de07c77a69d96ea85cf1349d03c9ca32608abec89ad",
+      "sourceSha256": "3fefe8513d7cb447f99b618600f23ea01cf4255c8388d8a984dbd53154f4c539",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.protocol.bootrom.v2_0.v1_4.write_reg_protocol",
+      "source": "bkutils/protocol/bootrom/v2_0/v1_4/write_reg_protocol.py",
+      "originalMarshalSha256": "7574402f8e8cc16fba60bb59e4804b560aebac157e6bef63dcea7089485af9ad",
+      "sourceSha256": "c160a33cf8f114d47d4ff74a2c5b7ddc970f5c99f46ba9928aee0b0924d69eb1",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bkutils.secure_debug.secure_debug",
+      "source": "bkutils/secure_debug/secure_debug.py",
+      "originalMarshalSha256": "0ab27aa40a5df06badf286b6fffb090675c48c830c6e04cac5d0bb59a1f37d3d",
+      "sourceSha256": "85fa2341c36135c361c0d068902b97901637b36fde0ab608c35fd02dc38ec252",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    },
+    {
+      "module": "bk_loader",
+      "source": "bk_loader.py",
+      "originalMarshalSha256": "3536b272c331c98b41b6d1291346ab6b77e3833129bf7df3dd1daf24400d90c4",
+      "sourceSha256": "a98c988d14475b1411b7b8fa9ed7ec97ba18cd2e40a98a46a737587ff0039598",
+      "runtimeFieldsMatch": true,
+      "instructionControlFlowMatch": true
+    }
+  ]
 }

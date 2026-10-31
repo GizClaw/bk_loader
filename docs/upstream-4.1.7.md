@@ -2,8 +2,8 @@
 
 Verified on October 31, 2026 against Beken's own download directory, version
 manifest, signed macOS packages and native CLI output. This audit records
-official runtime availability; it does not claim a source upgrade of the
-maintained `1.1.0.2.post2` implementation.
+official runtime availability and the completed recovery of its Python source.
+The maintained source package is now `4.1.7`.
 
 ## Version identifiers
 
@@ -14,7 +14,8 @@ maintained `1.1.0.2.post2` implementation.
 | `4.1.7.250` | CLI version printed by both macOS executables |
 | `4.1.7+261014250` | Bundled macOS `config/version.yaml` version |
 | `v1.1.0.5` | Fallback constant in the newer version module; product configuration normally overrides it |
-| `1.1.0.2.post2` | GizClaw's existing source maintenance/package revision |
+| `1.1.0.2.post2` | Previous GizClaw source maintenance/package revision |
+| `4.1.7` (package) | Current GizClaw package built from recovered 4.1.7 source |
 | `v1.1.0.2` | Version constant in that imported older Python source |
 
 The official `version.json` lists product release time
@@ -35,7 +36,7 @@ and executable SHA-256 values are in [the manifest](../upstream/4.1.7.json).
 | Windows x86_64 | `.zip`, 9,850,159 bytes | PE x86_64 standalone executable with Nuitka onefile markers; not executed on Windows |
 
 No Linux arm64 4.1.7 distribution was found in the checked official directory.
-The existing source maintenance release remains available for that platform.
+GizClaw builds its recovered Python implementation natively for Linux arm64.
 The official documentation states that separate macOS CLI installers for
 arm64 and x86_64 have been provided since product version 4.1.2.
 
@@ -53,31 +54,26 @@ the complete `.py` source or a source wheel/sdist. The Linux and Windows ZIPs
 contain their executable only; they are not Python source distributions.
 
 The checked 4.x directory exposes `cli` and `gui` downloads, not a source
-release. A complete 4.1.7 Python source tree has not been located there or in
-the checked official GitHub repositories. Recovering a few modules would not
-establish a complete, buildable source upgrade. Do not rename the older
-maintenance source version to imply it contains the 4.1.7 implementation.
+release. A complete upstream `.py` distribution has not been located.
+GizClaw has now recovered all 130 executable modules and four namespace
+packages from the pinned macOS executable and imported them into the maintained
+runtime. This includes CLI parsing, download/batch orchestration, configuration,
+chip controllers, secure debug and key injection.
 
-The code objects have now been extracted for recovery. There are 130 executable
-Python modules including the CLI entry point, plus four namespace packages.
-Comparing the current maintained source under Python 3.9 found 61 modules whose
-compiled runtime fields match, 51 changed modules, and 18 missing modules.
-The changed/missing set includes CLI parsing, download/batch orchestration,
-configuration and chip controllers. Automated decompilation still produces
-unsupported exception handling, invalid syntax and incomplete function bodies.
-Passing a syntax check alone does not establish recovered behavior.
+The [source snapshot](../upstream/4.1.7/README.md) preserves the unadapted
+reconstruction. Recompiling with Python 3.9 matches the complete runtime fields
+for 111 modules, excluding file/line metadata. All 130 match the typed
+instructions and control-flow graph under the documented layout-normalization
+rules. [The verification report](../upstream/4.1.7/source-verification.json)
+records each source and original-code hash; the verifier can repeat the check
+from the pinned executable without executing it.
 
-The version module has been reconstructed separately in
-[`upstream/4.1.7/source`](../upstream/4.1.7/README.md). Recompiling it under
-Python 3.9 matches the vendor code object's runtime fields, excluding file and
-line information. Its `bk_ver` is still `v1.1.0.5`; `get_tool_version()` reads
-the product's `config/version.yaml` and turns `4.1.7+261014250` into
-`4.1.7.250`. This explains why the fallback backend number and product version
-cannot be equated.
-
-The partial reconstruction is not imported into the maintained runtime.
-The source package remains `1.1.0.2.post2` until the remaining source and its
-behavior have been recovered and validated.
+The version module's fallback remains `v1.1.0.5`. Its `get_tool_version()` reads
+`config/version.yaml` and turns `4.1.7+261014250` into `4.1.7.250`. This explains
+why the fallback backend number and product version cannot be equated.
+The maintained package version is now `4.1.7`, based on the recovered source.
+See [source provenance](source-provenance.md) for explicit packaging/import
+adaptations and offline-validation limits.
 
 ## Installer contents
 

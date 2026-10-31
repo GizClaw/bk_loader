@@ -52,14 +52,18 @@ def main():
         clean = {key: value for key, value in os.environ.items()
                  if key not in {"PYTHONHOME", "PYTHONPATH", "VIRTUAL_ENV"}}
         clean["PATH"] = os.environ.get("SystemRoot", "C:\\Windows") + "\\System32" if system == "win32" else "/usr/bin:/bin"
-        for arguments in (["--help"], ["--version"], ["download", "--help"], ["erase", "--help"]):
+        for arguments in (
+            ["--help"], ["--version"], ["download", "--help"], ["erase", "--help"],
+            ["read", "--help"], ["secure", "--help"], ["inject_key", "--help"],
+        ):
             subprocess.run([str(binary), *arguments], cwd=staging, env=clean, check=True, timeout=90)
         result = subprocess.run(
             [str(binary), "tools", "selftest"], cwd=staging, env=clean,
             capture_output=True, text=True, check=True, timeout=90,
         )
         tested = json.loads(result.stdout)
-        if tested["packageVersion"] != package_version or not tested["frozen"] or tested["crypto"] != "ok":
+        if (tested["packageVersion"] != package_version or not tested["frozen"]
+                or tested["crypto"] != "ok" or tested["signing"] != "ok"):
             raise RuntimeError(f"Frozen executable failed self-test: {tested}")
         suffix = "zip" if system == "win32" else "tar.gz"
         filename = f"bk-loader-{package_version}-{host}.{suffix}"

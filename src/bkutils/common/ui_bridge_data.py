@@ -1,7 +1,6 @@
 import json
-from dataclasses import dataclass
 from enum import Enum
-
+from dataclasses import dataclass
 
 class MsgType(Enum):
     NORMAL = 'normal'
@@ -13,37 +12,34 @@ class MsgType(Enum):
     BIN_INFO = 'bin_info'
     DUMP_BIN_INFO = 'dump_bin_info'
     DUMP_FOLDER_INFO = 'dump_folder_info'
-
+    FACTORY_CHANNEL_STATUS = 'factory_channel_status'
 
 @dataclass
 class DumpBinInfo:
     bin_path: str
 
     def to_json(self):
-        return json.dumps({'bin_path': self.bin_path})
-
+        json_dict = {'bin_path': self.bin_path}
+        return json.dumps(json_dict)
 
 @dataclass
 class DumpFolderInfo:
     folder_path: str
 
     def to_json(self):
-        return json.dumps({'folder_path': self.folder_path})
-
+        json_dict = {'folder_path': self.folder_path}
+        return json.dumps(json_dict)
 
 @dataclass
 class OutputBinInfo:
     type: str
     msg: str
     can_edit: bool
+    supported: bool
 
     def to_json(self):
-        return json.dumps({
-            'type': self.type,
-            'msg': self.msg,
-            'can_edit': str(self.can_edit),
-        })
-
+        json_dict = {'type': self.type, 'msg': self.msg, 'can_edit': str(self.can_edit), 'supported': str(self.supported)}
+        return json.dumps(json_dict)
 
 @dataclass
 class OutputData:
@@ -52,12 +48,8 @@ class OutputData:
     extra: str = ''
 
     def to_json(self):
-        return json.dumps({
-            'msg_type': self.msg_type.value,
-            'msg_inner': self.msg_inner,
-            'extra': str(self.extra),
-        })
-
+        json_dict = {'msg_type': self.msg_type.value, 'msg_inner': self.msg_inner, 'extra': str(self.extra)}
+        return json.dumps(json_dict)
 
 @dataclass
 class TaskInfo:
@@ -66,20 +58,17 @@ class TaskInfo:
     task_start: bool = False
 
     def to_json(self):
-        return json.dumps({
-            'task_name': self.task_name,
-            'task_id': str(self.task_id),
-            'task_start': str(self.task_start),
-        })
+        log_data = {'task_name': self.task_name, 'task_id': str(self.task_id), 'task_start': str(self.task_start)}
+        return json.dumps(log_data)
 
     @staticmethod
     def list_to_json(task_info_list) -> str:
-        return json.dumps([{
-            'task_name': item.task_name,
-            'task_id': str(item.task_id),
-            'task_start': str(item.task_start),
-        } for item in task_info_list])
-
+        """将TaskInfo对象列表转换为JSON字符串"""
+        task_dicts = []
+        for task_info in task_info_list:
+            task_dict = {'task_name': task_info.task_name, 'task_id': str(task_info.task_id), 'task_start': str(task_info.task_start)}
+            task_dicts.append(task_dict)
+        return json.dumps(task_dicts)
 
 @dataclass
 class SerialInfo:
@@ -88,16 +77,14 @@ class SerialInfo:
     hwid: str
 
     def to_json(self):
-        return json.dumps({
-            'port_name': self.port_name,
-            'description': self.description,
-            'hwid': self.hwid,
-        })
+        log_data = {'port_name': self.port_name, 'description': self.description, 'hwid': self.hwid}
+        return json.dumps(log_data)
 
     @staticmethod
     def list_to_json(serial_info_list):
-        return json.dumps([{
-            'port_name': item.port_name,
-            'description': item.description,
-            'hwid': item.hwid,
-        } for item in serial_info_list])
+        """将SerialInfo对象列表转换为JSON字符串"""
+        serial_info_dicts = []
+        for serial_info in serial_info_list:
+            serial_info_dict = {'port_name': serial_info.port_name, 'description': serial_info.description, 'hwid': serial_info.hwid}
+            serial_info_dicts.append(serial_info_dict)
+        return json.dumps(serial_info_dicts)
