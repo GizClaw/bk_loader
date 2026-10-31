@@ -1,2 +1,6 @@
+# Preserve upstream source formatting and line endings.
+src/** -whitespace
+docs/upstream* -whitespace
+
 # Recovery report hashes must survive Windows core.autocrlf checkouts.
 upstream/4.1.7/source/** text eol=lf
